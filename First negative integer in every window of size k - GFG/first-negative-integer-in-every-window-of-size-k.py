@@ -1,19 +1,19 @@
 #User function Template for python3
-
+from collections import deque
 def printFirstNegativeInteger(a, n, k):
-    l = []
+    d = deque()
     ans = []
     i, j = 0, 0
     while j < n:
         if a[j] < 0:
-            l.append(a[j])
+            d.append(a[j])
         if j-i + 1 < k:
             j += 1
         else: 
-            if l:
-                ans.append(l[0])
-                if l[0] == a[i]:
-                    l.pop(0)
+            if d:
+                ans.append(d[0])
+                if d[0] == a[i]:
+                    d.popleft()
             else:
                 ans.append(0)
             i += 1
