@@ -4,7 +4,7 @@ class Solution:
         # code here 
         i, j, maxi, s = 0, 0, -1000000, 0
         while j <= N-1:
-            if j-i+1 < K:
+            if j < K-1:
                 s += Arr[j]
             elif j-i+1 == K:
                 s += Arr[j]
