@@ -2,18 +2,16 @@
 class Solution:
     def maximumSumSubarray (self,K,Arr,N):
         # code here 
-        i, j, maxi, s = 0, 0, -1000000, 0
-        while j <= N-1:
+        i, j, maxi, s = 0, 0, 0, 0
+        while j < N:
+            s += Arr[j]
             if j-i+1 < K:
-                s += Arr[j]
-            elif j-i+1 == K:
-                s += Arr[j]
-                maxi = max(s, maxi)
+                j += 1
             else:
-                s = s - Arr[i] + Arr[j]
                 maxi = max(s, maxi)
+                s -= Arr[i]
                 i += 1
-            j+=1
+                j += 1
         return maxi
 
 #{ 
