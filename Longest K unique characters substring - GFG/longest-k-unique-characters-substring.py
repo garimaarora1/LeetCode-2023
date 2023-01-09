@@ -19,6 +19,7 @@ class Solution:
                     d[s[i]] -= 1
                     i += 1
                 d[s[i]] -= 1
+                
                 if d[s[i]] == 0:
                     del d[s[i]]
                 i += 1
