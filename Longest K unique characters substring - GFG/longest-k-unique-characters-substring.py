@@ -15,14 +15,11 @@ class Solution:
                 maxi = max(maxi, j-i+1)
                 j += 1
             elif len(d) > k:
-                while s[i]==s[i+1]:
+                while len(d) > k:
                     d[s[i]] -= 1
+                    if d[s[i]] == 0:
+                        del d[s[i]]
                     i += 1
-                d[s[i]] -= 1
-                
-                if d[s[i]] == 0:
-                    del d[s[i]]
-                i += 1
                 j += 1
 
         return maxi
