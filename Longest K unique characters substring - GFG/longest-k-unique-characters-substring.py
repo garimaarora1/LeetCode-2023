@@ -15,7 +15,7 @@ class Solution:
                 maxi = max(maxi, j-i+1)
                 j += 1
             elif len(d) > k:
-                while i<j and s[i]==s[i+1]:
+                while s[i]==s[i+1]:
                     d[s[i]] -= 1
                     i += 1
                 d[s[i]] -= 1
