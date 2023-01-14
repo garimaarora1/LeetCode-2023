@@ -8,18 +8,13 @@ class Item:
 class Solution:    
     #Function to get the maximum total value in the knapsack.
     def fractionalknapsack(self, W,arr,n):
-        
-                
         arr.sort(key=lambda x:x.value/x.weight,reverse=True)
-
         i=0
         value=0
         while W>0 and i<n:
-            
-            if arr[i].weight> W:
-                value+=(arr[i].value/arr[i].weight)*W
-            else:
-                value+=arr[i].value
+
+            value+=(arr[i].value/arr[i].weight)*min(W,arr[i].weight)
+
             W-=arr[i].weight
             i+=1
         return value
