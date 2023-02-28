@@ -6,7 +6,6 @@ class Solution:
         res = []
         def fun(arr, i, subarr):
             if i == len(arr):
-
                 res.append(sum(subarr))
                 return 
             subarr.append(arr[i])    
