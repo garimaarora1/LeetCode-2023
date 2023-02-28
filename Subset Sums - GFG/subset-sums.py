@@ -13,9 +13,7 @@ class Solution:
             subarr.pop()
             fun(arr, i+1,subarr)
         fun(arr, i, subarr)
-        
         return res
-
 
 #{ 
  # Driver Code Starts
