@@ -8,8 +8,6 @@ class Solution:
         res = []
         v = [0] * V
         def dfs(node):
-            if v[node] != 0:
-                return
             res.append(node)
             v[node] = 1
             for i in adj[node]:
