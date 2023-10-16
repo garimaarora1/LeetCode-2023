@@ -10,7 +10,7 @@ class Solution:
                     i -= 1
                 else:
                     break
-            if i==-1:
+            if i == -1:
                 digits.insert(0,1)
             else:
                 digits[i] += 1
