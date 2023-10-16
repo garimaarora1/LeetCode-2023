@@ -3,10 +3,8 @@ class Solution:
         if digits[-1] != 9:
             digits[-1] += 1
         else:
-            # 8999
-            i = len(digits) # 4
-            i -=1 # 3
-            while i >=0:
+            i = len(digits) - 1
+            while i >= 0:
                 if digits[i] == 9:
                     digits[i] = 0
                     i -= 1
