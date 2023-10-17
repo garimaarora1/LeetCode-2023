@@ -3,10 +3,10 @@ class Solution:
         """
         Do not return anything, modify s in-place instead.
         """
-        n = len(s)
-        def fun(s, i):
-            if s == [] or i == len(s)//2:
-                return
-            s[i], s[n-i-1] = s[n-i-1], s[i]
-            fun(s, i+1)
-        fun(s, 0)
+        i = 0
+        j = len(s) - 1
+        while i < j:
+            s[i], s[j] = s[j], s[i]
+            i += 1
+            j -= 1
+        
