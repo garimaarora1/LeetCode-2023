@@ -4,15 +4,14 @@ class Solution:
         n = len(nums)
         right = n - 1
         result = [0] * n
-        i = n - 1
-        while left <= right:
+        for i in range(n - 1, -1, -1):
             right_val = abs(nums[right])
             left_val = abs(nums[left])
             if right_val > left_val:
-                result[i] = right_val**2
+                val = right_val
                 right -= 1
             else:
-                result[i] = left_val**2
+                val = left_val
                 left += 1
-            i -= 1
+            result[i] = val**2
         return result
