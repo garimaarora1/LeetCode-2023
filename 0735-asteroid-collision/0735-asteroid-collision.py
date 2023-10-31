@@ -21,8 +21,6 @@ class Solution:
                         st.pop()
                     elif (st and st[-1] < 0) or not st:
                         st.append(asteroid)
-                    # if abs(asteroid)
-                    # st.append(asteroid)
                 else:
                     st.append(asteroid)
         return st
