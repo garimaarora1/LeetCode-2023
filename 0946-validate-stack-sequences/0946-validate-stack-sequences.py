@@ -4,12 +4,7 @@ class Solution:
         st = []
         for i in range(len(pushed)):
             st.append(pushed[i])
-            while st and st[-1] == popped[j]:
+            while st and st[-1] == popped[j] and j < len(popped):
                 st.pop()
                 j += 1
-        while(j < len(popped)):
-            if popped[j] != st[-1]:
-                return False
-            st.pop()
-            j += 1
-        return True
+        return j == len(popped)
