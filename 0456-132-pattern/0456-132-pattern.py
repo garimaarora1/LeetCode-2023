@@ -5,7 +5,6 @@ class Solution:
         for num in nums:
             while mono_st and mono_st[-1][0] <= num:
                 mono_st.pop()
-            
             if mono_st and mono_st[-1][0] > num and mono_st[-1][1] < num:
                 return True
             mono_st.append((num,mini))
