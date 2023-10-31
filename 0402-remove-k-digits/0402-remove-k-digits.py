@@ -7,5 +7,5 @@ class Solution:
                 st.pop()
                 attempts -= 1
             st.append(n)
-        out = "".join(st[0:len(num)-k]).lstrip("0")
-        return "0" if out == "" else out 
+        res = "".join(st[0:len(num)-k]).lstrip("0")
+        return "0" if res == "" else res 
