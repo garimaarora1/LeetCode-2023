@@ -6,10 +6,11 @@ class Solution:
         j = 0
         for i in range(len(s)):
             d[s[i]] = d.get(s[i], 0) + 1
-            # new ele got added in dict 
+            # new ele got added to dict 
             if d[s[i]] == 1:
                 curr_sub_string_len += 1
                 max_sub_string_len = max(max_sub_string_len, curr_sub_string_len)
+            # duplicate ele got added to dict
             else:
                 while d[s[i]] >1:
                     d[s[j]] -= 1
