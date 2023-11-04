@@ -10,35 +10,23 @@ class Solution:
         i = 0
 
         while i < len(target):
-            if st == target:
-                return res
-
-            # while st and st[-1] < target[i] and (st[-1] > target[i-1] or i-1 ==0):
-            #     print("popping")
-            #     st.pop()
-            #     res.append("Pop")
+            # if st == target:
+            #     return res
             while not st or (st and st[-1]+1 < target[i]):
-                print("pushing", stream)
                 st.append(stream)
                 res.append("Push")
                 stream += 1
 
             while st and st[-1] < target[i] and (st[-1] > target[i-1] or i == 0):
-                print("popping")
                 st.pop()
                 res.append("Pop")
             
             if st == target:
                 return res
 
-            print("push")
             st.append(stream)
             stream += 1
             res.append("Push")
-#             if st[-1] < target[i]:
-#                 print("pop 1")
-#                 st.pop()
-#                 res.append("Pop")
             i += 1
         print(st)
         return res
