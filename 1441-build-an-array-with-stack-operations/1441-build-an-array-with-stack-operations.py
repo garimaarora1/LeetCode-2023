@@ -10,8 +10,6 @@ class Solution:
         i = 0
 
         while i < len(target):
-            # if st == target:
-            #     return res
             while not st or (st and st[-1]+1 < target[i]):
                 st.append(stream)
                 res.append("Push")
@@ -28,7 +26,6 @@ class Solution:
             stream += 1
             res.append("Push")
             i += 1
-        print(st)
         return res
     
     
