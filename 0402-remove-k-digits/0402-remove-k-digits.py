@@ -1,11 +1,13 @@
 class Solution:
     def removeKdigits(self, num: str, k: int) -> str:
-        st = []
-        attempts = k
-        for n in num:
-            while st and attempts and n < st[-1]:
-                st.pop()
-                attempts -= 1
-            st.append(n)
-        res = "".join(st[0:len(num)-k]).lstrip("0")
-        return "0" if res == "" else res 
+        ms = []
+        dup_k = k
+        for i in num:
+            while ms and i<ms[-1] and k:
+                ms.pop()
+                k -= 1
+            ms.append(i)
+
+        ans = ''.join(ms[0:len(num)-dup_k]).lstrip("0")
+        return ans if ans else "0"
+        
