@@ -1,5 +1,6 @@
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        if len(ransomNote) > len(magazine): return False
         counter_dict = defaultdict(int)
         for ch in magazine:
             counter_dict[ch] += 1
