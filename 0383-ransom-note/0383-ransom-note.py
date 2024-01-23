@@ -7,7 +7,6 @@ class Solution:
             if counter_dict[ch] == 0:
                 return False
             counter_dict[ch] -= 1
-            
         return True
         
         
