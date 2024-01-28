@@ -1,5 +1,4 @@
 class Solution:
-
     def recursive_pow(self, x, n) -> float:
         if n == 0:
             return 1
