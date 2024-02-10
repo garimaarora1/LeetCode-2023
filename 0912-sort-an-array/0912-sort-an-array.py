@@ -1,5 +1,4 @@
 class Solution:
-
     def merge(self, nums, l, mid, h):
         i, j = l, mid+1
         res = []
