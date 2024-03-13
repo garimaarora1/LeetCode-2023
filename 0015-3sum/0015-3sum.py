@@ -35,7 +35,6 @@ class Solution:
             for j in range(i+1, len(p)):
                 target = -(p[i]+p[j])
                 if target in n_set:
-                    print("here")
                     ans.add(tuple(sorted([p[i], p[j], target])))
                     
                     
@@ -45,7 +44,6 @@ class Solution:
             for j in range(i+1, len(n)):
                 target = -(n[i]+n[j])
                 if target in p_set:
-                    print("here2")
                     ans.add(tuple(sorted([n[i], n[j], target])))
         return ans
             
