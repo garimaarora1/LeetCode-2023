@@ -7,9 +7,9 @@ class Solution:
             while st and st[-1] <= nums2[i]:
                 st.pop()
             if not st:
-                d[nums2[i]] = (-1)
+                d[nums2[i]] = -1
             elif st and st[-1] > nums2[i]:
-                d[nums2[i]] = (st[-1])
+                d[nums2[i]] = st[-1]
             st.append(nums2[i])
         
         for num in nums1:
