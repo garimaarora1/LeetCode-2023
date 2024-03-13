@@ -9,6 +9,7 @@ class Solution:
             if text_freq_dict[char] == 0:
                 return 0
             else:
+                # why min?
                 count = min(count, text_freq_dict[char] // ballon_freq_dict[char])
         return count
         
