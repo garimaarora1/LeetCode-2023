@@ -5,6 +5,6 @@ class Solution:
             if i == 0: 
                 return 0 
             if i < 0:
-                ans *= -1
+                ans = -ans
         return ans
         
