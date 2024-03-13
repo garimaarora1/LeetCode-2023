@@ -5,7 +5,7 @@ class Solution:
         for i in range(1, len(nums)):
             if count == 0:
                 majority_element = nums[i]
-            count = count+1 if nums[i] == majority_element else count-1
+            count += 1 if nums[i] == majority_element else -1
         return majority_element
         
         
