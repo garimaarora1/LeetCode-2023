@@ -1,10 +1,12 @@
 class Solution:
     def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
-        freq_array = [0] * (len(nums))
-        ans = []
         for i in range(len(nums)):
-            freq_array[nums[i]-1] += 1
-        for i in range(len(freq_array)):
-            if freq_array[i] == 0:
-                ans.append(i+1)
-        return ans
+            temp = abs(nums[i]) - 1
+            if nums[temp] > 0:
+                nums[temp] *= -1
+        res = []
+        for i, n in enumerate(nums):
+            if n > 0:
+                res.append(i+1)
+        return res
+            
