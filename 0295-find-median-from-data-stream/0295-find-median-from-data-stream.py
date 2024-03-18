@@ -1,3 +1,4 @@
+# good explanation: https://leetcode.com/problems/find-median-from-data-stream/discuss/2492199/Python-3-Min-heap-and-Max-heap-approach-explained
 class MedianFinder:
 
     def __init__(self):
