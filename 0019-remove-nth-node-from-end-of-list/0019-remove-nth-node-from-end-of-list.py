@@ -16,6 +16,5 @@ class Solution:
         while right:
             right = right.next
             left = left.next
-        if not right:
-            left.next = left.next.next
+        left.next = left.next.next
         return dummy_node.next
