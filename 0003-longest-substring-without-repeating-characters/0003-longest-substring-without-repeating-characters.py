@@ -1,21 +1,18 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        d = {}
-        curr_sub_string_len = 0
-        max_sub_string_len = 0 
-        j = 0
-        for i in range(len(s)):
-            d[s[i]] = d.get(s[i], 0) + 1
-            # new ele got added to dict 
-            if d[s[i]] == 1:
-                curr_sub_string_len += 1
-                max_sub_string_len = max(max_sub_string_len, curr_sub_string_len)
-            # duplicate ele got added to dict
-            else:
-                while d[s[i]] >1:
-                    d[s[j]] -= 1
-                    if d[s[j]] == 0:
-                        curr_sub_string_len -= 1
-                    j += 1
-        return max_sub_string_len
-        
+        start, end = 0, 0
+        curr_window_len = 0
+        maximum_window_len = 0 
+        unique_char_set = set()
+        i = 0
+        while i < len(s):
+            while s[i] in unique_char_set and start < end:
+                unique_char_set.remove(s[start])
+                start += 1
+            unique_char_set.add(s[i])
+            end += 1
+            i += 1
+            curr_window_len = max(curr_window_len, len(unique_char_set))
+            maximum_window_len = max(maximum_window_len, curr_window_len)
+        return maximum_window_len
+
