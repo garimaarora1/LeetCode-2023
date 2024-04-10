@@ -11,14 +11,14 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
-        def find(root):
+        def pre_order(root):
             if not root:
                 return 0
-            l = max(0, find(root.left))
-            r = max(0, find(root.right))
+            l = max(0, pre_order(root.left))
+            r = max(0, pre_order(root.right))
             self.maxi = max(self.maxi, root.val+l+r)
             return root.val+max(l,r)
-        find(root)
+        pre_order(root)
         return self.maxi
         
         return self.maxi
