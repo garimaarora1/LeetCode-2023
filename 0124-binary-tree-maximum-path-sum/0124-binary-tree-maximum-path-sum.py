@@ -17,7 +17,7 @@ class Solution(object):
             l = max(0, pre_order(root.left))
             r = max(0, pre_order(root.right))
             self.maxi = max(self.maxi, root.val+l+r)
-            return root.val+max(l,r)
+            return root.val + max(l,r)
         pre_order(root)
         return self.maxi
         
