@@ -7,10 +7,6 @@
 class Solution(object):
     maxi = float('-inf')
     def maxPathSum(self, root):
-        """
-        :type root: TreeNode
-        :rtype: int
-        """
         def pre_order(root):
             if not root:
                 return 0
@@ -19,7 +15,4 @@ class Solution(object):
             self.maxi = max(self.maxi, root.val+l+r)
             return root.val + max(l,r)
         pre_order(root)
-        return self.maxi
-        
-        return self.maxi
-        
+        return self.maxi        
