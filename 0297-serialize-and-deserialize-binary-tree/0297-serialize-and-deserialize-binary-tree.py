@@ -9,6 +9,8 @@ class Codec:
         
     def serialize(self, root):
         res = []
+        
+        #dfs
         def pre_order(root):
             if not root:
                 res.append("N")
@@ -19,10 +21,12 @@ class Codec:
         pre_order(root)
         return ",".join(res)
         
-
+    
     def deserialize(self, data):
         nodes = data.split(",")
         self.i = -1
+        
+        # dfs
         def build_tree():
             self.i += 1
             if nodes[self.i] == "N":
@@ -30,7 +34,6 @@ class Codec:
             new_node = TreeNode(int(nodes[self.i]))
             new_node.left = build_tree()
             new_node.right = build_tree()
-            
             return new_node
         return build_tree()
         
