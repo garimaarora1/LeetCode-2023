@@ -7,17 +7,17 @@
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
         res = None
-        def pre_order(root):
+        def in_order(root):
             nonlocal res
             nonlocal k
             if not root:
                 return
-            pre_order(root.left)
+            in_order(root.left)
             k -= 1
             if k == 0:
                 res = root.val
                 return 
-            pre_order(root.right)
-        pre_order(root)
+            in_order(root.right)
+        in_order(root)
         return res
         
