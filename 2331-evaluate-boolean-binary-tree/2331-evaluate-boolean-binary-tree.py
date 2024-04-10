@@ -11,12 +11,6 @@ class Solution:
         l = self.evaluateTree(root.left)
         r = self.evaluateTree(root.right)
         if root.val == 2:
-            if l == 1 or r == 1:
-                return True
-            else:
-                return False
+            return l or r
         elif root.val == 3:
-            if l == 0 or r == 0:
-                return False
-            else:
-                return True
+            return l and r
