@@ -6,8 +6,8 @@
 #         self.right = right
 class Solution:
     def evaluateTree(self, root: Optional[TreeNode]) -> bool:
-        if root.val == 0 or root.val == 1:
-            return root.val
+        if not root.left and not root.right:
+            return True if root.val == 1 else False
         l = self.evaluateTree(root.left)
         r = self.evaluateTree(root.right)
         if root.val == 2:
