@@ -12,3 +12,5 @@ class Solution:
         r = self.maxDepth(root.right)
         return max(l,r) + 1
         
+        
+        
