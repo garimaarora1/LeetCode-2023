@@ -7,9 +7,9 @@
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         if not root:
-            return []
-        res = []
+            return
         q = [root]
+        res = []
         while q:
             l = len(q)
             curr_level = []
@@ -22,7 +22,10 @@ class Solution:
                     q.append(ele.right)
             res.append(curr_level)
         return res
-                    
-                    
+            
                 
+                
+                
+            
+        
         
