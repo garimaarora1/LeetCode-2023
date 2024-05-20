@@ -13,7 +13,7 @@ class Solution:
                     if 0<=dx<row and 0<=dy<col and grid[dx][dy] == '1' and (dx, dy) not in visited:
                         queue.append((dx, dy))
                         visited.add((dx, dy))
-                        
+            
         row, col = len(grid), len(grid[0])
         visited = set()
         count = 0
