@@ -11,24 +11,19 @@ class LRUCache:
     def __init__(self, capacity: int):
         self.cap = capacity
         self.cache = {} # pointing to node
-        self.left = Node(0,0)
-        self.right = Node(0,0)
-        self.left.next = self.right
-        self.right.prev = self.left
+        self.left = self.right = Node(0,0)
+        self.left.next, self.right.prev = self.right, self.left
         
     # remove node from the list
     def remove(self, node):
         prev, nxt = node.prev, node.next
-        prev.next = nxt
-        nxt.prev = prev
+        prev.next, nxt.prev = nxt, prev
     
     # insert node at right
     def insert(self, node):
         prev, nxt = self.right.prev, self.right
-        prev.next = node
-        nxt.prev = node
-        node.next = nxt
-        node.prev = prev
+        prev.next = nxt.prev = node
+        node.next, node.prev = nxt, prev
         
     def get(self, key: int) -> int:
         if key in self.cache:
