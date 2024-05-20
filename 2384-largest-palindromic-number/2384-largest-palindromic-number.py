@@ -8,10 +8,7 @@ class Solution:
         sorted_numbers = sorted(list(counter.keys()))[::-1]
         for key in sorted_numbers:
             res += (counter[key]//2) * key
-            if counter[key]%2 == 0:
-                counter[key] = 0
-            elif counter[key]-1>0:
-                counter[key] = 1
+            counter[key] = counter[key]%2
         for key in sorted_numbers:
             if counter[key] > 0:
                 mid = key
