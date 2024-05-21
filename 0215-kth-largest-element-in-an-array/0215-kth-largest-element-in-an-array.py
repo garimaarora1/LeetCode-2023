@@ -6,8 +6,7 @@ class Solution:
             heapq.heappush(min_heap, num)
             if len(min_heap) > k:
                 heapq.heappop(min_heap)
-        ele = heapq.heappop(min_heap)
-        return ele
+        return min_heap[0]
                 
             
         
