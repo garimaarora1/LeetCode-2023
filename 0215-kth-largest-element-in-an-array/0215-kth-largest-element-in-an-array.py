@@ -7,7 +7,6 @@ class Solution:
             if len(min_heap) > k:
                 heapq.heappop(min_heap)
         return min_heap[0]
-                
             
         
         
