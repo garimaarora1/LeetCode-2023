@@ -4,20 +4,29 @@ class Solution:
         def bfs(i,j):
             queue = deque()
             queue.append((i,j))
-            
-            directions = [(0,-1), (0,1), (1,0), (-1,0)]
+            directions = [(0,1), (0,-1), (1,0), (-1,0)]
             while queue:
                 x, y = queue.popleft()
-                
+                for dr,dc in directions:
+                    dx = x+dr
+                    dy = y+dc
+                    if 0<=dx<row and 0<=dy<col and grid[dx][dy] == '1' and grid[dx][dy] not in visited:
+                        queue.append((dx,dy))
+                        visited.add((dx,dy))
+        def bfs(i, j):
+            queue = deque()
+            queue.append((i,j))
+            while queue:
+                x, y = queue.popleft()
+                directions = [(0,-1), (0,1), (1,0), (-1,0)]
                 for dr,dc in directions:
                     dx = x + dr
                     dy = y + dc
+                    if 0<=dx<row and 0<=dy<col and grid[dx][dy] == '1' and (dx, dy) not in visited:
+                        queue.append((dx, dy))
+                        visited.add((dx, dy))
+                        
                     
-                    if 0<=dx<row and 0<=dy<col and grid[dx][dy] == '1' and (dx,dy) not in visited:
-                        queue.append((dx,dy))
-                        visited.add((dx,dy))
-                    
-                
         
         row = len(grid)
         col = len(grid[0])
@@ -29,4 +38,5 @@ class Solution:
                     visited.add((i,j))
                     bfs(i,j)
                     count += 1
+                
         return count
