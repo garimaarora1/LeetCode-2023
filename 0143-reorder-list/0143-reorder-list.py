@@ -23,13 +23,12 @@ class Solution:
             slow = slow.next
             fast = fast.next.next
 
-        neww = self.rev(slow.next)
+        head2 = self.rev(slow.next)
         slow.next = None
 
         
         # merge
         head1 = head
-        head2 = neww
         
         while head2:
             temp = head1.next
