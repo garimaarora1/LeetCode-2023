@@ -25,19 +25,24 @@ https://leetcode.com/problems/merge-k-sorted-lists/discuss/1032502/Python-Simple
 class Solution:
         
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
-        head = ListNode()
-        curr = head
-        h = []
+        curr = ListNode()
+        head = curr
+        heap = []
+        # Step 1: iterate over lists and add the first value of each list to heap and move the pointer to next
         for i in range(len(lists)):
             if lists[i]:
-                heapq.heappush(h, (lists[i].val, i))
+                heapq.heappush(heap, (lists[i].val, i))
                 lists[i] = lists[i].next
-        while h:
-            val, i = heapq.heappop(h)
+            
+        # Step 2: while heap size is not zero pop the heap and add to curr node.next and refill the heap with the same list if it exist
+        while heap:
+            val, i = heapq.heappop(heap)
             curr.next = ListNode(val)
             curr = curr.next
             if lists[i]:
-                heapq.heappush(h, (lists[i].val, i))
+                heapq.heappush(heap, (lists[i].val, i))
                 lists[i] = lists[i].next
+                
+        # Step 3: return head.next
         return head.next
         
