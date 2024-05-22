@@ -14,6 +14,8 @@ https://leetcode.com/problems/linked-list-cycle/discuss/1829768/JavaScript-Easy-
 """
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
+        if not head:
+            return False
         slow, fast = head, head
         while fast and fast.next:
             slow = slow.next
