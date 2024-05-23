@@ -1,20 +1,12 @@
-class Solution:
+class Solution(object):
     def maxProfit(self, prices: List[int]) -> int:
-        buy_price_1 = buy_price_2 = float('inf')
-        sell_price_1, sell_price_2 = 0, 0
-        
+        t1_cost, t2_cost = float("inf"), float("inf")
+        t1_profit, t2_profit = 0, 0
         for price in prices:
-            if price < buy_price_1:
-                buy_price_1 = price
-            else:
-                sell_price_1 = max(sell_price_1, price - buy_price_1)
-            
-            if price - sell_price_1 < buy_price_2:
-                buy_price_2 = price - sell_price_1
-            else:
-                sell_price_2 = max(sell_price_2, price - buy_price_2)
-        return sell_price_2
-        
-            
-            
-            
+            # the maximum profit if only one transaction is allowed
+            t1_cost = min(t1_cost, price)
+            t1_profit = max(t1_profit, price - t1_cost)
+            # reinvest the gained profit in the second transaction
+            t2_cost = min(t2_cost, price - t1_profit)
+            t2_profit = max(t2_profit, price - t2_cost)
+        return t2_profit
