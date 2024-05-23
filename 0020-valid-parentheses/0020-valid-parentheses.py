@@ -1,14 +1,15 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        parentheses_dict = {')': '(', '}': '{', ']': '[' }
+        valid_parantheses = {'(': ')', '{': '}', '[': ']'}
         st = []
-        
-        for char in s:
-            if char in parentheses_dict.values():
-                st.append(char)
+        for para in s:
+            if para in list(valid_parantheses.keys()):
+                st.append(para)
             else:
-                if st and st[-1] == parentheses_dict[char]:
-                    st.pop()
-                else:
+                if not st:
                     return False
-        return True if not st else False
+                ele = st.pop()
+                if valid_parantheses[ele] != para:
+                    return False
+        return st==[]
+        
