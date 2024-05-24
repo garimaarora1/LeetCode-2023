@@ -10,4 +10,4 @@ class Solution:
                 buy_price = price
         return max_profit
     
-        
+    
