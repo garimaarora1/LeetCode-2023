@@ -10,7 +10,7 @@ class Solution:
                 d[s[i]]-=1
                 if d[s[i]]==0:
                     req-=1
-            while req==0 and j<len(s):
+            while req==0 and j<=i:
                 if i-j+1<mini:
                     res=[j,i]
                     mini=i-j+1
