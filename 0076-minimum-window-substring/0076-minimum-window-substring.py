@@ -19,6 +19,4 @@ class Solution:
                     if d[s[j]]==1:
                         req+=1
                 j+=1
-        if mini== float('inf'):
-            return ""
-        return s[res[0]:res[1]+1]
+        return "" if mini== float('inf') else s[res[0]:res[1]+1]
