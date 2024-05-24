@@ -1,13 +1,10 @@
 class Solution:
     def maxProfit(self, k: int, prices: List[int]) -> int:
-        n=len(prices)
-        if n==0 or k==0:
-            return 0
-        # do same best time buy 3
-        buy=[float('inf')]*k
-        sell=[0]*k
-        for i in range(n):
+        buy_price = [float('inf')] * (k)
+        max_profit = [0] * (k)
+        for i in range(len(prices)):
             for j in range(k):
-                buy[j]=min(buy[j],prices[i] if j==0 else prices[i]-sell[j-1] )
-                sell[j]=max(sell[j],prices[i]-buy[j])
-        return sell[-1]
+                buy_price[j] = min(buy_price[j], prices[i] if j == 0 else prices[i]-max_profit[j-1])
+                max_profit[j] = max(max_profit[j], prices[i]-buy_price[j])
+        return max_profit[-1]
+        
