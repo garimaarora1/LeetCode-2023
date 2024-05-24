@@ -5,9 +5,9 @@ class Solution:
         count = 0
         while j < len(arr):
             curr_sum += arr[j]
-
+            
             if j-i+1 == k:
-                if (curr_sum / k )>= threshold:
+                if curr_sum / k >= threshold:
                     count += 1
                 curr_sum -= arr[i]
                 i += 1
