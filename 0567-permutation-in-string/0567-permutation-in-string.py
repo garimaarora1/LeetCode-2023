@@ -3,7 +3,7 @@ class Solution:
         counter = defaultdict(int)
         for ch in s1:
             counter[ch] += 1
-        window_size = len(s1)
+        window_size = len(counter)
         i = j = 0
         count = 0
         while j < len(s2):
@@ -12,14 +12,14 @@ class Solution:
                 counter[ch] -= 1
                 
                 if counter[ch] == 0:
-                    count += 1
-                if j - i + 1 == window_size and count == len(counter):
-                    return True
-            if j - i + 1 == window_size:
+                    window_size -= 1
+                    if window_size == 0:
+                        return True
+            if j - i + 1 == len(s1):
                 if s2[i] in counter:
                     counter[s2[i]] += 1
                     if counter[s2[i]] == 1:
-                        count -= 1
+                        window_size += 1
                 i += 1 
             j += 1
             
