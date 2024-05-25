@@ -9,6 +9,7 @@ class Solution:
             x1, y1= point[0], point[1]
             x2, y2 = 0, 0
             edist = self.euclidean_distance(x1, x2, y1, y2)
+            # distance at position 0
             heapq.heappush(heap,(-edist, (x1,y1)))
             if len(heap) > k:
                 heapq.heappop(heap)
