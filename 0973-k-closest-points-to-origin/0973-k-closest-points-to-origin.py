@@ -1,6 +1,7 @@
 class Solution:
     def euclidean_distance(self, x1,x2,y1,y2):
         return sqrt((x1-x2)**2 + (y1-y2)**2)
+
     def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
         # max heap 
         heap = []
