@@ -19,12 +19,14 @@ class Solution:
         res = ''
         while heap or prev:
             if prev and not heap:
+                # important
                 return ""
             cnt, char = heapq.heappop(heap)
             res += char
             cnt += 1 
             if prev:
                 heapq.heappush(heap, prev)
+                 # important
                 prev = None
             if cnt != 0:
                 prev = (cnt, char)
