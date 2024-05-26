@@ -1,11 +1,11 @@
 class Solution:
     def jump(self, nums: List[int]) -> int:
-        curr_end, curr_far = 0, 0
-        jump = 0
-        # important: len(nums-1)
+        curr_end = 0
+        curr_far = 0
+        jumps = 0
         for i in range(len(nums)-1):
-            curr_far = max(curr_far, nums[i] + i)
+            curr_far = max(curr_far, nums[i]+i)
             if i == curr_end:
-                jump += 1
+                jumps += 1
                 curr_end = curr_far
-        return jump
+        return jumps
