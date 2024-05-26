@@ -10,6 +10,7 @@ class Solution:
         def dfs(root, mini, maxi):
             if not root:
                 return True
+            # important to compare mini and maxi with None
             if mini!=None and root.val <= mini:
                 return False
             if maxi!=None and root.val >= maxi:
