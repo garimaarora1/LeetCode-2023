@@ -4,7 +4,5 @@ class Solution:
         for i in range(len(nums)):
             if max_reachable < i: 
                 return False
-            max_reachable = max(max_reachable, nums[i]+i)
-            
-            
+            max_reachable = max(max_reachable, nums[i]+i)   
         return True
