@@ -1,9 +1,10 @@
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
-        max_reachable_index = 0
+        max_reachable = 0
         for i in range(len(nums)):
-            if max_reachable_index < i:
+            if max_reachable < i: 
                 return False
-            max_reachable_index = max(max_reachable_index, i+nums[i])
+            max_reachable = max(max_reachable, nums[i]+i)
+            
+            
         return True
-        
