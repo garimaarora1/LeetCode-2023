@@ -1,26 +1,27 @@
-# good explanation: https://leetcode.com/problems/find-median-from-data-stream/discuss/2492199/Python-3-Min-heap-and-Max-heap-approach-explained
+# maintain two heaps
+# first: max heap
+# second: min heap 
+# algo: add element to first heap, get the max value and add to second heap, if len first < second: get the min value from second heap and add to first heap 
 class MedianFinder:
 
     def __init__(self):
-        self.first_half = []
-        self.second_half = []
+        self.first_heap = []
+        self.second_heap = []
 
     def addNum(self, num: int) -> None:
-        heappush(self.first_half, -num)
-        popped_element = heappop(self.first_half)
-        heappush(self.second_half, -popped_element)
+        heapq.heappush(self.first_heap, -num)
+        max_num = -heapq.heappop(self.first_heap)
+        heapq.heappush(self.second_heap, max_num)
         
-        if len(self.first_half) < len(self.second_half):
-            popped_element = heappop(self.second_half)
-            heappush(self.first_half, -popped_element)
+        if len(self.first_heap) < len(self.second_heap):
+            min_num = -heapq.heappop(self.second_heap)
+            heapq.heappush(self.first_heap, min_num)
         
 
     def findMedian(self) -> float:
-        if len(self.first_half) == len(self.second_half):
-            return (-self.first_half[0] + self.second_half[0]) / 2
-        return -self.first_half[0]
-        
-
+        if len(self.first_heap) == len(self.second_heap):
+            return (-self.first_heap[0] +self.second_heap[0]) / 2
+        return -self.first_heap[0]
 
 # Your MedianFinder object will be instantiated and called as such:
 # obj = MedianFinder()
