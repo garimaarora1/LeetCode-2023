@@ -1,7 +1,7 @@
 class Solution:
     def isNStraightHand(self, hand: List[int], groupSize: int) -> bool:
         # use hash map and heap
-        # remember False cases: return False if it is not in hasp map and return False if it not on top of the heap
+        # remember False cases: return False if it is not in hasp map and return False if it not on top of the heap if its count has become zero.
         if len(hand) % groupSize != 0:
             return False
         
