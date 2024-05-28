@@ -25,7 +25,6 @@ class Trie:
                 return False
             curr = curr.children[char]
         return curr.end_of_word
-        
 
     def startsWith(self, prefix: str) -> bool:
         curr = self.root
@@ -34,8 +33,6 @@ class Trie:
                 return False
             curr = curr.children[char]
         return True
-        
-        
 
 
 # Your Trie object will be instantiated and called as such:
