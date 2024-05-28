@@ -6,36 +6,50 @@
 #         self.right = None
 
 class Codec:
-        
-    def serialize(self, root):
-        res = []
-        
-        #dfs
-        def pre_order(root):
-            if not root:
-                res.append("N")
-                return
-            res.append(str(root.val))
-            pre_order(root.left)
-            pre_order(root.right)
-        pre_order(root)
-        return ",".join(res)
-        
-    
-    def deserialize(self, data):
-        nodes = data.split(",")
+    def __init__(self):
+        self.res = []
         self.i = -1
+
+    def dfs(self, node):
+        if not node:
+            self.res.append("N")
+            # important
+            return
+        # important
+        self.res.append(str(node.val))
+        self.dfs(node.left)
+        self.dfs(node.right)
+
+    def build_tree(self, values):
+        self.i += 1
+        if values[self.i] == 'N':
+            return None
         
-        # dfs
-        def build_tree():
-            self.i += 1
-            if nodes[self.i] == "N":
-                return None
-            new_node = TreeNode(int(nodes[self.i]))
-            new_node.left = build_tree()
-            new_node.right = build_tree()
-            return new_node
-        return build_tree()
+        node = TreeNode(values[self.i])
+        node.left = self.build_tree(values)
+        node.right = self.build_tree(values)
+        return node
+
+    def serialize(self, root):
+        """Encodes a tree to a single string.
+        
+        :type root: TreeNode
+        :rtype: str
+        """
+        self.dfs(root)
+        print(self.res)
+        return ','.join(self.res)
+
+    def deserialize(self, data):
+        """Decodes your encoded data to tree.
+        
+        :type data: str
+        :rtype: TreeNode
+        """
+        values = data.split(',')
+        root = self.build_tree(values)
+        return root
+        
         
 
 # Your Codec object will be instantiated and called as such:
