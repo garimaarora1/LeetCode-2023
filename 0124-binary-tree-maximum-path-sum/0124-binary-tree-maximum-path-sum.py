@@ -4,15 +4,17 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-class Solution(object):
+class Solution:
     maxi = float('-inf')
-    def maxPathSum(self, root):
-        def pre_order(root):
+    def maxPathSum(self, root: Optional[TreeNode]) -> int:
+        def dfs(root):
             if not root:
-                return 0
-            l = max(0, pre_order(root.left))
-            r = max(0, pre_order(root.right))
-            self.maxi = max(self.maxi, root.val+l+r)
-            return root.val + max(l,r)
-        pre_order(root)
-        return self.maxi        
+                return 0 
+            left = max(0, dfs(root.left))
+            right = max(0, dfs(root.right))
+            self.maxi = max(self.maxi, left+right+root.val)
+            return max(left,right) + root.val
+        
+        dfs(root)
+        return self.maxi
+        
