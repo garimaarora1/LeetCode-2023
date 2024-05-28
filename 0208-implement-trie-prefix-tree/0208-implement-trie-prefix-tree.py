@@ -33,6 +33,7 @@ class Trie:
                 return False
             curr = curr.children[char]
         return True
+        
 
 
 # Your Trie object will be instantiated and called as such:
