@@ -1,25 +1,21 @@
 class Solution:
     def platesBetweenCandles(self, s: str, queries: List[List[int]]) -> List[int]:
         n = len(s)
-        prev_candles = [0] * n
-        next_candles = [0] * n
+        prev_candles = [-1] * n
+        next_candles = [n] * n
         prefix_sum = [0] * n
         ans = []
         for i in range(n):
             if s[i] == '|':
                 prev_candles[i] = i
             else:       
-                if i == 0:
-                    prev_candles[i] = -1
-                else:
+                if i!=0:
                     prev_candles[i] = prev_candles[i-1]
         for i in range(n-1, -1, -1):
             if s[i] == '|':
                 next_candles[i] = i
             else:
-                if i == n-1:
-                    next_candles[i] = -1
-                else:
+                if i != n-1:
                     next_candles[i] = next_candles[i+1]
         for i in range(n):
             if s[i] == '*':
