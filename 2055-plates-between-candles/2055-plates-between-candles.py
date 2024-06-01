@@ -5,31 +5,24 @@ class Solution:
         next_candles = [0] * n
         prefix_sum = [0] * n
         ans = []
-        for i in range(n):
-            if s[i] == '|':
-                prev_candles[i] = i
-            else:       
-                if i == 0:
-                    prev_candles[i] = -1
-                else:
-                    prev_candles[i] = prev_candles[i-1]
-        for i in range(n-1, -1, -1):
-            if s[i] == '|':
-                next_candles[i] = i
-            else:
-                if i == n-1:
-                    next_candles[i] = -1
-                else:
-                    next_candles[i] = next_candles[i+1]
-        for i in range(n):
+        for i in range(len(s)):
             if s[i] == '*':
-                if i == 0:
-                    prefix_sum[i] = 1
-                else:
-                    prefix_sum[i] = prefix_sum[i-1] + 1
-            else:
                 if i != 0:
-                    prefix_sum[i] = prefix_sum[i-1]
+                    prev_candles[i] = prev_candles[i-1] 
+            else:
+                prev_candles[i] = i
+
+            if s[n-i-1] == "*":
+                if i != 0:
+                    next_candles[n-i-1] = next_candles[n-i]
+            else:
+                next_candles[n-i-1] = n-i-1
+
+            if i != 0:
+                prefix_sum[i] += prefix_sum[i-1]
+            if s[i] == "*":
+                prefix_sum[i] += 1
+
         for query in queries:
             start = next_candles[query[0]]
             end = prev_candles[query[1]]
