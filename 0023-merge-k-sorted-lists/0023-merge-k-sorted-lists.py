@@ -28,21 +28,24 @@ class Solution:
         curr = ListNode()
         head = curr
         heap = []
-        # Step 1: iterate over lists and add the first value of each list to heap and move the pointer to next
+        # step 1: iterate over lists and add first value to heap
         for i in range(len(lists)):
             if lists[i]:
                 heapq.heappush(heap, (lists[i].val, i))
                 lists[i] = lists[i].next
-            
-        # Step 2: while heap size is not zero pop the heap and add to curr node.next and refill the heap with the same list if it exist
+        
+        # step 2: while heap, pop the heap and add to curr.next and if from that list there are more values, add that value to heap
+        
         while heap:
-            val, i = heapq.heappop(heap)
+            val, list_idx = heapq.heappop(heap)
             curr.next = ListNode(val)
             curr = curr.next
-            if lists[i]:
-                heapq.heappush(heap, (lists[i].val, i))
-                lists[i] = lists[i].next
-                
-        # Step 3: return head.next
+            if lists[list_idx]:
+                heapq.heappush(heap, (lists[list_idx].val, list_idx))
+                lists[list_idx] = lists[list_idx].next
+
+        
+        
+        # step 3: return head.next
         return head.next
         
