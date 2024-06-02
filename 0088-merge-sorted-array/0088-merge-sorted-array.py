@@ -9,7 +9,6 @@ class Solution:
             if p2 < 0:
                 return
             if p1 >=0 and nums1[p1]>nums2[p2]:
-
                 nums1[p] = nums1[p1]
                 p1 -= 1
             else:
