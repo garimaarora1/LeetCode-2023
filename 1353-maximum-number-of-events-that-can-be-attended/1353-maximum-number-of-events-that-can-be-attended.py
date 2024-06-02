@@ -4,7 +4,7 @@ class Solution:
         # 2. check what events can be attended today and add those evenet's end time to heap
         # 3. remove evetns whose end time has gone from the heap
         # 4. attend the event that can be attended today
-        
+        # really good explanation: https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended/discuss/1116371/Python-With-detailed-explanation
         
         events.sort()
         max_days = max(end for start, end in events)
