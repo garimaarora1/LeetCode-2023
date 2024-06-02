@@ -8,6 +8,8 @@ class Solution:
         for p in range(m+n-1,-1,-1):
             if p2 < 0:
                 return
+            
+            # important p1 > =0 
             if p1 >=0 and nums1[p1]>nums2[p2]:
                 nums1[p] = nums1[p1]
                 p1 -= 1
