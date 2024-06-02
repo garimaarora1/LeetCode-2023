@@ -6,10 +6,9 @@ class Solution:
             if counter[ch] > 0:
                 res += ch*counter[ch]
                 counter[ch] = 0
-        for key in counter:
+        for key,value in counter.items():
             if counter[key] > 0:
-                res += key * counter[key]
-                counter[key] = 0
+                res += key * value
         return res
                 
         
