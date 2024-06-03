@@ -3,6 +3,6 @@ class Solution:
         for i in range(1, n//2+1):
             if n%i == 0:
                 k -= 1
-            if k == 0:
-                return i
+                if k == 0:
+                    return i
         return n if k == 1 else -1
