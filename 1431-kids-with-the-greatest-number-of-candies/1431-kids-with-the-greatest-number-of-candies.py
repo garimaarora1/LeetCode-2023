@@ -8,13 +8,10 @@ class Solution:
         
         
         """
-        maxi = max(candies)
+        maxCandies = max(candies)
         res = []
         for candy in candies:
-            if candy + extraCandies >= maxi:
-                res.append(True)
-            else:
-                res.append(False)
+            res.append(candy + extraCandies >= maxCandies)
         return res
         
         
