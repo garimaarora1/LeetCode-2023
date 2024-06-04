@@ -11,7 +11,7 @@ class Solution:
                 i += 1
             seen.add(nums[j])
             curr_sum += nums[j]
-            if j-i+1 == k:
+            if len(seen) == k:
                 maxi = max(maxi, curr_sum)
                 seen.remove(nums[i])
                 curr_sum -= nums[i]
