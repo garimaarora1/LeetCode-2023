@@ -2,8 +2,8 @@ class Node:
     def __init__(self, key, value):
         self.key = key
         self.value = value
-        self.next = None
         self.prev = None
+        self.next = None
 
 class LRUCache:
 
@@ -31,7 +31,6 @@ class LRUCache:
             self.insert(self.cache[key])
             return self.cache[key].value
         return -1
-            
 
     def put(self, key: int, value: int) -> None:
         if key in self.cache:
