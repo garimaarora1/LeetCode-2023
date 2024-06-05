@@ -6,27 +6,25 @@
 #         self.right = right
 class Solution:
     def pseudoPalindromicPaths (self, root: Optional[TreeNode]) -> int:
-        # 1. Find all root to leaf paths: pre-order DFS traversal
-        # 2. At the root node check that we should have at most one number with odd freq (maintain dictionary for this)
-        # TODO: Can avoid using dict by using bit manipulation
         
-        def dfs(node, freq):
-            if not node:
-                return
-            nonlocal count
-            freq[node.val] += 1
+        def dfs(root, freq_map):
+            if not root:
+                return 
             
-            if node.left == None and node.right == None:
-                odd_count = sum(1 for val in freq.values() if val%2 == 1)
-                if odd_count <=1:
+            nonlocal count
+            
+            freq_map[root.val] += 1
+            
+            if not root.left and not root.right:
+                odd_parity = sum(1 for val in freq_map.values() if val%2 != 0)
+                if odd_parity <= 1:
                     count += 1
-            dfs(node.left, freq)
-            dfs(node.right, freq)
-                    
-            freq[node.val] -= 1
+            dfs(root.left, freq_map)
+            dfs(root.right, freq_map)
+            
+            freq_map[root.val] -= 1
         
+        freq_map = defaultdict(int)
         count = 0
-        freq = defaultdict(int)
-        dfs(root, freq)
+        dfs(root, freq_map)
         return count
-        
