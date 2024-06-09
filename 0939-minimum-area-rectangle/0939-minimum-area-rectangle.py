@@ -10,7 +10,6 @@ class Solution:
                 if x2 > x1 and y2 > y1:
                     if (x1,y2) in points_set and (x2,y1) in points_set:
                         area = abs(x2-x1) * abs(y2-y1)
-                        if area:
-                            min_area = min(min_area, area)
+                        min_area = min(min_area, area)
         return min_area if min_area != float('inf') else 0
                             
