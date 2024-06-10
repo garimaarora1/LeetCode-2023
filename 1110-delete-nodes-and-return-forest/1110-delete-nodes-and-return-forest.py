@@ -23,8 +23,7 @@ class Solution:
             
             if is_deleted:
                 return None
-            else:
-                return root
+            return root
                 
                 
         helper(root, True)
