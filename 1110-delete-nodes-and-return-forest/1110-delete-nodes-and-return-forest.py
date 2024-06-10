@@ -21,9 +21,7 @@ class Solution:
             root.left = helper(root.left, is_deleted)
             root.right = helper(root.right, is_deleted)
             
-            if is_deleted:
-                return None
-            return root
+            return None if is_deleted else root
                 
                 
         helper(root, True)
