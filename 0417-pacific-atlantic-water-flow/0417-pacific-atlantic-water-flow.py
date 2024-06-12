@@ -2,33 +2,32 @@ class Solution:
     def pacificAtlantic(self, matrix: List[List[int]]) -> List[List[int]]:
 
         def bfs(queue):
-            reachable = set()
+            visited = set()
             while queue:
-                (row, col) = queue.popleft()
-                reachable.add((row, col))
-                for (x, y) in [(1, 0), (0, 1), (-1, 0), (0, -1)]: # Check all 4 directions
-                    new_row, new_col = row + x, col + y
-                    if new_row < 0 or new_row >= num_rows or new_col < 0 or new_col >= num_cols:
-                        continue
-                    if (new_row, new_col) in reachable:
-                        continue
-
-                    if matrix[new_row][new_col] < matrix[row][col]:
-                        continue
-                    queue.append((new_row, new_col))
-            return reachable
-        num_rows, num_cols = len(matrix), len(matrix[0])
-
+                x, y = queue.popleft()
+                visited.add((x, y))
+                directions = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+                for dr, dc in directions: 
+                    dx, dy = x + dr, y + dc
+                    if 0 <= dx < rows and 0 <= dy < cols and (dx, dy) not in visited and matrix[dx][dy] >= matrix[x][y]:
+                        queue.append((dx, dy))
+            return visited
+    
+    
+        rows, cols = len(matrix), len(matrix[0])
+        
+        
         pacific_queue = deque()
         atlantic_queue = deque()
-        for i in range(num_rows):
+        for i in range(rows):
             pacific_queue.append((i, 0))
-            atlantic_queue.append((i, num_cols - 1))
-        for i in range(num_cols):
+            atlantic_queue.append((i, cols - 1))
+        for i in range(cols):
             pacific_queue.append((0, i))
-            atlantic_queue.append((num_rows - 1, i))
+            atlantic_queue.append((rows - 1, i))
+            
             
         pacific_reachable = bfs(pacific_queue)
         atlantic_reachable = bfs(atlantic_queue)
-        
+
         return list(pacific_reachable.intersection(atlantic_reachable))
