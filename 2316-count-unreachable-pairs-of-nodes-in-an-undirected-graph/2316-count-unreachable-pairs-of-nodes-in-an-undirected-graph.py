@@ -22,6 +22,7 @@ class Solution:
         visited = set()
         curr_component_size = 0
         
+        # bfs
         def bfs(node):
             queue = deque()
             size = 1
@@ -35,7 +36,8 @@ class Solution:
                         queue.append(adj)
                         visited.add(adj)
             return size
-
+        
+        # iteraring all nodes
         for i in range(n):
             if i not in visited:
                 curr_component_size = bfs(i)
