@@ -5,8 +5,8 @@ class Solution:
         1. Create adj list
         2. Initialize count_pairs, remaining_nodes, curr_component_size, visited
         3. BFS
-        4. count_pairs = curr_component_size * (remaining nodes - curr_comp_size)
-        5. remaining_nodes -= curr_component_size
+        4. remaining_nodes -= curr_component_size
+        5. count_pairs = curr_component_size * remaining_nodes
         '''
         
         # create adj list
