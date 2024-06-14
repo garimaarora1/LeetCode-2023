@@ -4,16 +4,15 @@ class Solution:
         graph = defaultdict(list)
         
         n = len(bombs)
-        max_connected_components = 0
+        max_connected = 0
         for i in range(n):
             for j in range(n):
                 if i == j:
                     continue
-                # add j to i's adj list if i can detonate j
-                
                 xi, yi, ri = bombs[i]
                 xj, yj, _ = bombs[j]
-                
+
+                # add j to i's adj list if i can detonate j
                 if ri ** 2 >= (xi-xj)**2 + (yi-yj)**2:
                     graph[i].append(j)
         
@@ -30,12 +29,7 @@ class Solution:
                         visited.add(adj)
             return len(visited)
         
-        
-        
         for i in range(n):
-            curr_connected_components = bfs(i)
-            max_connected_components = max(max_connected_components, curr_connected_components)
-        return max_connected_components
-        
-        
-        # bfs
+            curr_connected = bfs(i)
+            max_connected = max(max_connected, curr_connected)
+        return max_connected
