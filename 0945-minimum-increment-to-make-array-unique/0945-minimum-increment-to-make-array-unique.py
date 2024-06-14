@@ -4,7 +4,7 @@ class Solution:
         1. sort nums, count = 0
         2. whenever nums[i-1] >= nums[i]:
         3. count += nums[i-1]-nums[i] + 1
-        4. nums[i]= nums[i-1] + 
+        4. nums[i]= nums[i-1] + 1
         """
         
         nums.sort()
