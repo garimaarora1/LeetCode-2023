@@ -16,9 +16,8 @@ class Solution:
                     elif not visited[adj]:
                         queue.append(adj)
                         visited[adj] = -1 * visited[i]
-            return True
 
         for i in range(len(graph)):
-            if not bfs(i):
+            if bfs(i) == False:
                 return False
         return True
