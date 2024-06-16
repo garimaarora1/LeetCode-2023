@@ -21,9 +21,7 @@ class Solution:
                 if indegree[adj] == 0:
                     queue.append(adj)
         
-        if len(res) == numCourses:
-            return res
-        print(res)
-        return []
+
+        return res if len(res) == numCourses else []
             
         
