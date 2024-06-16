@@ -19,6 +19,5 @@ class Solution:
                 indegree[adj] -=1 
                 if indegree[adj] == 0:
                     queue.append(adj)
-            
-        
+
         return count == numCourses
