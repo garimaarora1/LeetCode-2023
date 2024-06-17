@@ -1,7 +1,7 @@
 class Solution:
     def reorganizeString(self, s: str) -> str:
         
-        # adding all the values to hash map and store freq for each ch, key: ch, value: freq
+        # adding all the values to hash map and storing freq for each ch, key: ch, value: freq
         counter = defaultdict(int)
         for ch in s:
             counter[ch] += 1
