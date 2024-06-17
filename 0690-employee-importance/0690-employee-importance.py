@@ -9,18 +9,14 @@ class Employee:
 
 class Solution:
     def getImportance(self, employees: List['Employee'], id: int) -> int:
-        emp_map = {emp.id: emp for emp in employees}
-        
-        total_importance = 0 
-        
+        emp_map = {employee.id: employee for employee in employees}
         queue = deque()
         queue.append(id)
-        
+        total_importance = 0
         while queue:
-            emp_id = queue.popleft()
-            emp = emp_map[emp_id]
-            total_importance += emp.importance
-            for subordinate in emp.subordinates:
+            curr_id = queue.popleft()
+            employee = emp_map[curr_id]
+            total_importance += employee.importance
+            for subordinate in employee.subordinates:
                 queue.append(subordinate)
-
         return total_importance
