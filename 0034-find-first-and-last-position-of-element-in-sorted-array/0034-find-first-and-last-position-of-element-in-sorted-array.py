@@ -31,8 +31,8 @@ class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
         if not nums:
             return -1, -1
+
         l = self.left(nums, target, 0, len(nums)-1)
-        
         r = self.right(nums, target, l, len(nums)-1)
         
         return l, r
