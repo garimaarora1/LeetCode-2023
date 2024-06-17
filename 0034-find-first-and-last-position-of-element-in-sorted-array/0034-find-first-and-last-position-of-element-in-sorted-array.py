@@ -1,36 +1,38 @@
 class Solution:
-    def searchRange(self, a: List[int], target: int) -> List[int]:
+    def left(self, nums, target, low, high):
+        res = -1
+
+        while low <= high:
+            mid = (low + high) // 2
+            if nums[mid] == target:
+                res = mid
+                high = mid -1
+            elif nums[mid] > target:
+                high = mid - 1
+            else:
+                low = mid + 1
+        print(11)
+        return res
+    
+    def right(self, nums, target, low, high):
+        res = -1
+
+        while low <= high:
+            mid = (low + high) // 2
+            if nums[mid] == target:
+                res = mid
+                low = mid + 1
+            elif nums[mid] > target:
+                high = mid - 1
+            else:
+                low = mid + 1
+        return res
+
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        if not nums:
+            return -1, -1
+        l = self.left(nums, target, 0, len(nums)-1)
         
-        def left(a, target, start, end):
-            res = -1
-            while start <= end:
-                mid = (end+start)//2
-                if target == a[mid]:
-                    res = mid 
-                    end = mid-1
-                elif target < a[mid]:
-                    end = mid-1
-                else:
-                    start = mid+1
-            return res
+        r = self.right(nums, target, l, len(nums)-1)
         
-        def right(a, target, start, end):
-            res = -1
-            while start <= end:
-                mid = (end+start)//2
-                if target == a[mid]:
-                    res = mid 
-                    start = mid+1
-                elif target < a[mid]:
-                    end = mid-1
-                else:
-                    start = mid+1
-            return res
-        
-        if len(a)==0:
-            return -1,-1
-        
-        l = left(a, target, 0, len(a)-1)
-        r = right(a, target, l, len(a)-1)
-        
-        return l,r
+        return l, r
