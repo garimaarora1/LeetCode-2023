@@ -6,9 +6,7 @@
 #         self.right = right
 class Solution:
     def printTree(self, root: Optional[TreeNode]) -> List[List[str]]:
-        
-        # height of binary tree 
-        
+
         def height(root):
             if not root:
                 return 0
@@ -23,9 +21,6 @@ class Solution:
             res[row][mid] = str(root.val)
             populate_res(root.left, low, mid-1, row+1)
             populate_res(root.right, mid+1, high, row+1)
-            
-            
-        
         
         row = height(root)
         cols = (2 **row) - 1
