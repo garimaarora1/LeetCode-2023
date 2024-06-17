@@ -9,15 +9,18 @@ class Node:
 
 class Solution:
     def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
-        original_to_copy = {None:None}
+        ll_dict = {None: None}
+        
+        curr = head
+        
+        while curr:
+            ll_dict[curr] = Node(curr.val)
+            curr = curr.next
+        
         curr = head
         while curr:
-            original_to_copy[curr] = Node(curr.val)
+            copy_node = ll_dict[curr]
+            copy_node.next = ll_dict[curr.next]
+            copy_node.random = ll_dict[curr.random]
             curr = curr.next
-        curr = head
-        while curr:
-            copy = original_to_copy[curr]
-            copy.next = original_to_copy[curr.next]
-            copy.random = original_to_copy[curr.random]
-            curr = curr.next
-        return original_to_copy[head]
+        return ll_dict[head]
