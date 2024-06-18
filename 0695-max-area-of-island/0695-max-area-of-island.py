@@ -4,7 +4,7 @@ class Solution:
             queue = deque()
             queue.append((i,j))
             directions = ((0,1),(1,0),(0,-1),(-1,0))
-            curr_count = 0
+            curr_count = 1
             while queue:
                 x, y = queue.popleft()
                 for dr, dc in directions:
@@ -24,11 +24,9 @@ class Solution:
         res = 0
         for i in range(row):
             for j in range(col):
-                count = 0
                 if grid[i][j] == 1 and grid[i][j] not in visited:
-                    count += 1
                     visited.add((i,j))
-                    count += bfs(i,j)
+                    count = bfs(i,j)
                     res = max(res, count)
         return res
         
