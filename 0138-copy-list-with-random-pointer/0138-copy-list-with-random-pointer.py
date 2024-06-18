@@ -17,7 +17,7 @@ class Solution:
             ll_dict[curr] = Node(curr.val)
             curr = curr.next
         for curr, copy_node in ll_dict.items():
-            if copy_node:
+            if curr:
                 copy_node.next = ll_dict[curr.next]
                 copy_node.random = ll_dict[curr.random]
         return ll_dict[head]
