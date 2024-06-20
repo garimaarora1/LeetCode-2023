@@ -1,6 +1,5 @@
 class Solution:
     def minimumFuelCost(self, roads: List[List[int]], seats: int) -> int:
-
         graph = defaultdict(list)
         for u,v in roads:
             graph[u].append(v)
