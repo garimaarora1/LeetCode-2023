@@ -7,9 +7,6 @@ class Solution:
             graph[v].append(u)
         
         def dfs(node, k, parent):
-            # if len(graph[node]) == 1 and graph[node] == parent:
-            #     return (1,0)
-            
             total_count = 0
             total_fuel = 0
             for adj in graph[node]:
