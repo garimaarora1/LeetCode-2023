@@ -8,19 +8,21 @@ class Solution:
             
             graph[var1].append((value, var2))
             graph[var2].append((1/value, var1))
+
         def bfs(var1):
             visited = set()
             queue = deque()
             queue.append((1, var1))
-
+            visited.add(var1)
             while queue:
                 curr_product, var = queue.popleft()
                 if var == var2:
                     return curr_product
-                visited.add(var)
+                # visited.add(var)
                 for value, adj in graph[var]:
                     if adj not in visited:
                         queue.append((curr_product*value, adj))
+                        visited.add(adj)
             return -1
 
         for query in queries:
