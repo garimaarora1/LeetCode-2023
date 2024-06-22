@@ -18,7 +18,6 @@ class Solution:
                         queue.append((dx, dy))
                         visited.add((dx,dy))
 
-                    
         visited = set()
         
         for i in range(row):
