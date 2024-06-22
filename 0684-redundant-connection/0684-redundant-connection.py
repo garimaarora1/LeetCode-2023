@@ -3,7 +3,6 @@ class Solution:
         parent = [i for i in range(1001)]
         
         def find(x):
-            
             if parent[x] != x:
                 return find(parent[x])
             else:
