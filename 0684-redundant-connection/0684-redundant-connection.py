@@ -4,7 +4,8 @@ class Solution:
         
         def find(x):
             if parent[x] != x:
-                return find(parent[x])
+                parent[x] = find(parent[x])
+                return parent[x]
             else:
                 return x
 
