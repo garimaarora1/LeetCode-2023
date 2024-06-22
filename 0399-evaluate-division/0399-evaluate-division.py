@@ -18,7 +18,7 @@ class Solution:
                 curr_product, var = queue.popleft()
                 if var == var2:
                     return curr_product
-                # visited.add(var)
+                
                 for value, adj in graph[var]:
                     if adj not in visited:
                         queue.append((curr_product*value, adj))
