@@ -12,6 +12,7 @@ class Solution:
             visited = set()
             queue = deque()
             queue.append((1, var1))
+
             while queue:
                 curr_product, var = queue.popleft()
                 if var == var2:
@@ -20,7 +21,7 @@ class Solution:
                 for value, adj in graph[var]:
                     if adj not in visited:
                         queue.append((curr_product*value, adj))
-            return -1.0
+            return -1
 
         for query in queries:
             var1, var2 = query[0], query[1]
