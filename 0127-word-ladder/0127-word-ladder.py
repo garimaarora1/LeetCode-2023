@@ -4,7 +4,6 @@ class Solution:
         if endWord not in wordList:
             return 0
         queue = deque()
-        visited = set()
         queue.append(beginWord)
         count = 1
         while queue:
