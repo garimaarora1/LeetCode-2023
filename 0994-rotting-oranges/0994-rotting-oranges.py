@@ -3,7 +3,6 @@ class Solution:
         row = len(grid)
         col = len(grid[0])
         
-        
         queue = deque()
         remaining_oranges = 0
         for i in range(row):
@@ -28,7 +27,6 @@ class Solution:
                         grid[dx][dy] = 2
                         queue.append((dx, dy))
                         remaining_oranges -= 1
-            
-        
+
         return minutes if remaining_oranges == 0 else -1
         
