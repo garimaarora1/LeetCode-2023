@@ -5,8 +5,7 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    
-    
+
     def inorder_traversal(self, root, inorder):
         if not root:
             return
