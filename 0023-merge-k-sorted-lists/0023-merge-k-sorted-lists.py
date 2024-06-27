@@ -39,7 +39,7 @@ class Solution:
             val, i = heapq.heappop(heap)
             curr.next = ListNode(val)
             
-            #important
+            # Important
             curr = curr.next
             if lists[i]:
                 heapq.heappush(heap, (lists[i].val, i))
