@@ -1,34 +1,32 @@
 class Solution:
     def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
+        rows = len(grid)
+        cols = len(grid[0])
+        max_area = 0
+        
         def bfs(i,j):
             queue = deque()
             queue.append((i,j))
-            directions = ((0,1),(1,0),(0,-1),(-1,0))
-            curr_count = 1
+            directions = [(0,1), (0,-1), (1,0), (-1,0)]
+            curr_area = 1
             while queue:
-                x, y = queue.popleft()
+                dx, dy = queue.pop()
                 for dr, dc in directions:
-                    dx = x + dr
-                    dy = y + dc
-                    
-                    if 0<=dx<row and 0<=dy<col and grid[dx][dy] == 1 and (dx, dy) not in visited:
-                        curr_count += 1
-                        visited.add((dx, dy))
-                        queue.append((dx, dy))
-            return curr_count
-
-
+                    x = dx + dr
+                    y = dy + dc
+                    if 0<=x<rows and 0<=y<cols and grid[x][y] == 1 and (x,y) not in visited:
+                        visited.add((x,y))
+                        queue.append((x,y))
+                        curr_area += 1
+            return curr_area
+                        
+        
         visited = set()
-        row = len(grid)
-        col = len(grid[0])
-        res = 0
-        for i in range(row):
-            for j in range(col):
-                if grid[i][j] == 1 and grid[i][j] not in visited:
+        for i in range(rows):
+            for j in range(cols):
+                if grid[i][j] == 1 and (i,j) not in visited:
                     visited.add((i,j))
-                    count = bfs(i,j)
-                    res = max(res, count)
-        return res
-        
-        
+                    curr_area = bfs(i,j)
+                    max_area = max(max_area, curr_area)
+        return max_area
         
