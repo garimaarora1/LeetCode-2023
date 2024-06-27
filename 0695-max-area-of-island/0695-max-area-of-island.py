@@ -19,8 +19,7 @@ class Solution:
                         queue.append((x,y))
                         curr_area += 1
             return curr_area
-                        
-        
+                           
         visited = set()
         for i in range(rows):
             for j in range(cols):
