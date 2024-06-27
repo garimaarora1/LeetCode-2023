@@ -7,10 +7,8 @@ class Solution:
             if diff > 0:
                 heapq.heappush(heap, diff)
                 
-                if len(heap) <= ladders:
-                    continue
-                
-                bricks -= heapq.heappop(heap)
-                if bricks < 0:
-                    return i
+                if len(heap) > ladders:
+                    bricks -= heapq.heappop(heap)
+                    if bricks < 0:
+                        return i
         return len(heights) - 1
