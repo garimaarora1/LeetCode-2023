@@ -1,31 +1,63 @@
+from typing import List
+
+class UnionFind:
+    def __init__(self, size):
+        self.parent = list(range(size))
+        self.rank = [1] * size
+        self.size = [1] * size
+
+    def find(self, p):
+        if self.parent[p] != p:
+            self.parent[p] = self.find(self.parent[p])
+        return self.parent[p]
+
+    def union(self, p, q):
+        rootP = self.find(p)
+        rootQ = self.find(q)
+        
+        if rootP != rootQ:
+            if self.rank[rootP] > self.rank[rootQ]:
+                self.parent[rootQ] = rootP
+                self.size[rootP] += self.size[rootQ]
+            elif self.rank[rootP] < self.rank[rootQ]:
+                self.parent[rootP] = rootQ
+                self.size[rootQ] += self.size[rootP]
+            else:
+                self.parent[rootQ] = rootP
+                self.size[rootP] += self.size[rootQ]
+                self.rank[rootP] += 1
+
+    def getSize(self, p):
+        rootP = self.find(p)
+        return self.size[rootP]
+
+
 class Solution:
+    
     def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
-        rows = len(grid)
-        cols = len(grid[0])
+        if not grid:
+            return 0
+
+        rows, cols = len(grid), len(grid[0])
+        uf = UnionFind(rows * cols)
+
+        directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+
+        def getIndex(r, c):
+            return r * cols + c
+
+        for r in range(rows):
+            for c in range(cols):
+                if grid[r][c] == 1:
+                    for dr, dc in directions:
+                        nr, nc = r + dr, c + dc
+                        if 0 <= nr < rows and 0 <= nc < cols and grid[nr][nc] == 1:
+                            uf.union(getIndex(r, c), getIndex(nr, nc))
+
         max_area = 0
-        
-        def bfs(i,j):
-            queue = deque()
-            queue.append((i,j))
-            directions = [(0,1), (0,-1), (1,0), (-1,0)]
-            curr_area = 1
-            while queue:
-                dx, dy = queue.pop()
-                for dr, dc in directions:
-                    x = dx + dr
-                    y = dy + dc
-                    if 0<=x<rows and 0<=y<cols and grid[x][y] == 1 and (x,y) not in visited:
-                        visited.add((x,y))
-                        queue.append((x,y))
-                        curr_area += 1
-            return curr_area
-                           
-        visited = set()
-        for i in range(rows):
-            for j in range(cols):
-                if grid[i][j] == 1 and (i,j) not in visited:
-                    visited.add((i,j))
-                    curr_area = bfs(i,j)
-                    max_area = max(max_area, curr_area)
+        for r in range(rows):
+            for c in range(cols):
+                if grid[r][c] == 1:
+                    max_area = max(max_area, uf.getSize(getIndex(r, c)))
+
         return max_area
-        
