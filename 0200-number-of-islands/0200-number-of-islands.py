@@ -1,28 +1,42 @@
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
-        rows = len(grid)
-        cols = len(grid[0])
+        ones_count = 0 
+        row = len(grid)
+        col = len(grid[0])
         
-        def bfs(i, j):
-            queue = deque()
-            queue.append((i, j))
-            directions = [(1,0), (0,1), (-1,0), (0,-1)]
-            while queue:
-                x, y = queue.popleft()
-                for dr, dc in directions:
-                    dx = x + dr
-                    dy = y + dc
-                    if 0<=dx<rows and 0<=dy<cols and grid[dx][dy] == '1' and (dx, dy) not in visited:
-                        visited.add((dx, dy))
-                        queue.append((dx, dy))
+        for i in range(row):
+            for j in range(col):
+                if grid[i][j] == '1':
+                    ones_count += 1
+        parent = [i for i in range(row*col)]
         
-        visited = set()
-        count = 0
+        def find(x):
+            if parent[x] != x:
+                parent[x] = find(parent[x])
+                return parent[x]
+            else:
+                return x
+
+        def union(x, y):
+            x_parent, y_parent = find(x), find(y)
+            if x_parent == y_parent:
+                return False
+            if x_parent < y_parent:
+                parent[y_parent] = x_parent
+            else:
+                parent[x_parent] = y_parent
+            return True
         
-        for i in range(rows):
-            for j in range(cols):
-                if grid[i][j] == "1" and (i, j) not in visited:
-                    count += 1
-                    bfs(i, j)
-                    visited.add((i, j))
-        return count
+        directions = [(0,1),(1,0),(0,-1),(-1,0)]
+        for i in range(row):
+            for j in range(col):
+                if grid[i][j] == '1':
+                    position_1 = i*col + j 
+                    for dx, dy in directions:
+                        x = i + dx
+                        y = j + dy
+                        if 0<=x<row and 0<=y<col and grid[x][y] == '1':
+                            position_2 = x*col + y
+                            if union(position_2, position_1):
+                                ones_count -= 1
+        return ones_count
