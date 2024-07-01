@@ -17,17 +17,15 @@ class Solution:
         def union(x, y):
             nonlocal max_count
             x_parent, y_parent = find(x), find(y)
-            if x_parent == y_parent:
-                return False
-            if size[x_parent] < size[y_parent]:
-                parent[x_parent] = y_parent
-                size[y_parent] += size[x_parent]
-            else:
-                parent[y_parent] = x_parent
-                size[x_parent] += size[y_parent]
+            if x_parent != y_parent:
+                if size[x_parent] < size[y_parent]:
+                    parent[x_parent] = y_parent
+                    size[y_parent] += size[x_parent]
+                else:
+                    parent[y_parent] = x_parent
+                    size[x_parent] += size[y_parent]
             curr_max = max(size[x_parent], size[y_parent])
             max_count = max(max_count, curr_max)
-            return True
         
         directions = [(0,1),(1,0),(0,-1),(-1,0)]
         for i in range(row):
