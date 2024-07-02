@@ -3,19 +3,14 @@ class Solution:
         ones_count = 0 
         row = len(grid)
         col = len(grid[0])
-        
-        for i in range(row):
-            for j in range(col):
-                if grid[i][j] == '1':
-                    ones_count += 1
+
         parent = [i for i in range(row*col)]
         
         def find(x):
             if parent[x] != x:
                 parent[x] = find(parent[x])
-                return parent[x]
-            else:
-                return x
+            return parent[x]
+
 
         def union(x, y):
             x_parent, y_parent = find(x), find(y)
@@ -31,6 +26,7 @@ class Solution:
         for i in range(row):
             for j in range(col):
                 if grid[i][j] == '1':
+                    ones_count += 1
                     position_1 = i*col + j 
                     for dx, dy in directions:
                         x = i + dx
