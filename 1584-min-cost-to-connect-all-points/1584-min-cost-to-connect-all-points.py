@@ -18,8 +18,7 @@ class Solution:
         heapq.heapify(heap)
         count = 1
         # rmwa
-        while heap:
-            
+        while heap:  
             dist, point = heapq.heappop(heap)
             if point not in visited:
                 count += 1
