@@ -15,5 +15,3 @@ class Solution:
         source = "JFK"
         dfs(source)
         return res[::-1]
-    
-    [["JFK","KUL"],["JFK","NRT"],["NRT","JFK"]]
