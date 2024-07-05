@@ -34,11 +34,6 @@ class Solution {
             prev = node;
             node = node.next;
         }
-        // if (criticalPoints < 2) {
-        //     res[0] = -1;
-        //     res[1] = -1;
-        //     return res;
-        // }
         if (minimum != Integer.MAX_VALUE) {
             res[0] = minimum;
             res[1] = maximum;
