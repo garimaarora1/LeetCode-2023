@@ -25,12 +25,13 @@ class Solution {
                 criticalPoints ++;
                 if (first_index == -1) {
                     first_index = curr_index;
-                    prev_index = curr_index;
+                    
                 } else {
                     minimum = Math.min(minimum, curr_index-prev_index);
                     maximum = Math.max(maximum, curr_index-first_index);
-                    prev_index = curr_index;
+                    
                 }
+                prev_index = curr_index;
             }
             prev = node;
             node = node.next;
