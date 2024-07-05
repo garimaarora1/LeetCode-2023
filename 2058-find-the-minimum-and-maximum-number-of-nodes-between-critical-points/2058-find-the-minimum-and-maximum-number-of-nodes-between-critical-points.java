@@ -18,34 +18,32 @@ class Solution {
         int maximum = Integer.MIN_VALUE;
         int criticalPoints = 0;
         int curr_index = 0;
-        int[] res = new int[2];
+        int[] res = {-1, -1};
         while (node != null && node.next != null) {
             curr_index ++;
             if ((prev.val > node.val && node.val < node.next.val) || (prev.val < node.val && node.val > node.next.val)) {
                 criticalPoints ++;
                 if (first_index == -1) {
                     first_index = curr_index;
-                    
                 } else {
                     minimum = Math.min(minimum, curr_index-prev_index);
                     maximum = Math.max(maximum, curr_index-first_index);
-                    
                 }
                 prev_index = curr_index;
             }
             prev = node;
             node = node.next;
         }
-        if (criticalPoints < 2) {
-            res[0] = -1;
-            res[1] = -1;
-            return res;
+        // if (criticalPoints < 2) {
+        //     res[0] = -1;
+        //     res[1] = -1;
+        //     return res;
+        // }
+        if (minimum != Integer.MAX_VALUE) {
+            res[0] = minimum;
+            res[1] = maximum;
+       
         }
-        
-        res[0] = minimum;
-        res[1] = maximum;
-        return res;
-        
-        
+         return res;  
     }
 }
