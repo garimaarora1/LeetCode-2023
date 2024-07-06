@@ -6,7 +6,6 @@ class Solution:
             n = n // 10
             total_sum += last_digit**2
         return total_sum
-        # self.get_next_number(n, total_sum)
         
     def isHappy(self, n: int) -> bool:
         seen = set()
