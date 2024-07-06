@@ -1,15 +1,13 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        valid_parantheses = {'(': ')', '{': '}', '[': ']'}
-        st = []
-        for para in s:
-            if para in list(valid_parantheses.keys()):
-                st.append(para)
+        braces_map = {']': '[', '}': '{', ')': '('}
+        stack = []
+        for bracket in s:
+            if bracket in braces_map:
+                if not stack or stack[-1] != braces_map[bracket]:
+                    return False
+                stack.pop()
             else:
-                if not st:
-                    return False
-                ele = st.pop()
-                if valid_parantheses[ele] != para:
-                    return False
-        return st==[]
+                stack.append(bracket)
+        return stack == []
         
