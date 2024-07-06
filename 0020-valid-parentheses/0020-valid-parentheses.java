@@ -1,11 +1,13 @@
 class Solution {
-        private static final HashMap<Character, Character> MAPPINGS = new HashMap<Character, Character>();
+    private static final HashMap<Character, Character> MAPPINGS;
         
-        static {
+    static {
+        MAPPINGS = new HashMap<>();
         MAPPINGS.put(']', '[');
         MAPPINGS.put('}', '{');
         MAPPINGS.put(')', '(');
-        }
+    }
+
     public boolean isValid(String s) {
 
         Stack<Character> stack = new Stack<>();
