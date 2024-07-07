@@ -4,7 +4,7 @@ class Solution:
         stack = []
         
         for p, s in sorted(pairs)[::-1]:
-            stack.append((target-p)/s)
-            if len(stack) >= 2 and stack[-1] <= stack[-2]:
-                stack.pop()
+            curr_time = (target-p)/s
+            if not stack or (stack and curr_time > stack[-1]):
+                stack.append(curr_time)
         return len(stack)
