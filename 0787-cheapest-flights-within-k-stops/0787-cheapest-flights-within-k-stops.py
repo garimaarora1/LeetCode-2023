@@ -5,26 +5,20 @@ class Solution:
         for u, v, price in flights:
             graph[u].append((v, price))
         
-        heap = []
+        queue = deque()
         # price to visit each node
-        prices = defaultdict(lambda: float('inf'))
-        prices[(src, 0)] = 0
+        prices = [float('inf')]*n
+        prices[src] = 0
         # price, source, steps
-        heap.append((0, src, 0))
+        queue.append((0, src, 0))
         
-        while heap:
-            price, node, steps = heapq.heappop(heap)
-            
-            if node == dst:
-                return price
-            if steps <= k:
-                for adj_node, adj_price in graph[node]:
-                    new_price = adj_price+price
-                    if new_price < prices.get((adj_node, steps + 1), float('inf')):
-                        prices[(adj_node, steps + 1)] = new_price
-                        heapq.heappush(heap, (new_price, adj_node, steps+1))
-        return -1
-                
-                
-        
+        while queue:
+            price, node, steps = queue.popleft()
+
+            for adj_node, adj_price in graph[node]:
+                new_price = adj_price+price
+                if steps <= k and prices[adj_node] > new_price:
+                    prices[adj_node] = new_price
+                    queue.append((new_price, adj_node, steps+1))
+        return prices[dst] if prices[dst] != float('inf') else -1
         
