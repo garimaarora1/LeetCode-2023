@@ -1,15 +1,20 @@
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
-        visited_set = set()
+        
+        visited = set()
         queue = deque()
-        queue.append((0,0))
+        queue.append((amount, 0))
         while queue:
-            coin, steps = queue.popleft()
-            if coin == amount:
+            curr_amount, steps = queue.popleft()
+            if curr_amount == 0:
                 return steps
-            for i in coins:
-                if coin + i <= amount and coin+i not in visited_set:
-                    queue.append((coin+i,steps+1))
-                    visited_set.add(coin+i)
+            for coin in coins:
+                if curr_amount-coin >= 0 and curr_amount-coin not in visited :
+                    queue.append((curr_amount-coin, steps+1))
+                    visited.add(curr_amount-coin)
         return -1
+            
+        
+        
+
         
