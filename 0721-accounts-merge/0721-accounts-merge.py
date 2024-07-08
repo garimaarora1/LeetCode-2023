@@ -27,8 +27,7 @@ class Solution:
                     email_groups[email] = i
                 else:
                     union(email_groups[email], i)
-        print(email_groups)
-        print(parent)
+
         merged_accounts_dict = defaultdict(list)
         
         for key, value in email_groups.items():
