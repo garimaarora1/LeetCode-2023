@@ -14,7 +14,6 @@ class Solution {
         }
         
         // init heap 'the less frequent element first'
-        
         Queue<Integer> heap = new PriorityQueue<>((n1, n2) -> freqMap.get(n1) - freqMap.get(n2));
         
         // 2. Keep k top frequent elements in the heap
