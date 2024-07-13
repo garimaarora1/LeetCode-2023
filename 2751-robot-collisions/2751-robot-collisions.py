@@ -1,6 +1,6 @@
 class Solution:
     def survivedRobotsHealths(self, positions: List[int], healths: List[int], directions: str) -> List[int]:
-        sorted_pos = [(pos,i) for i,pos in enumerate(positions)]
+        sorted_pos = [(pos, i) for i, pos in enumerate(positions)]
         sorted_pos.sort()
         stack = []
         for pos, i in sorted_pos:
