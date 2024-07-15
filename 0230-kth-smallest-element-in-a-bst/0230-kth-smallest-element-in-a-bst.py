@@ -10,16 +10,19 @@ class Solution:
         
         #inorder: elements are traversed in asc order
         def dfs(root):
+            # important nonlocal vars
             nonlocal res
             nonlocal k
             if not root:
                 return
             dfs(root.left)
+            # decrementing k each time a node is visited
             k -= 1
             if k == 0:
                 res = root.val
                 return
             dfs(root.right)
+        
         dfs(root)
         return res
-                
+        
