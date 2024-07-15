@@ -9,8 +9,8 @@ class Solution:
         
         nodes_map = defaultdict(TreeNode)
         children = set()
-        for parent, child, is_left in descriptions:
-            
+
+        for parent, child, is_left in descriptions: 
             children.add(child)
             if parent not in nodes_map:
                 nodes_map[parent] = TreeNode(parent)
