@@ -21,7 +21,7 @@ class Solution:
         return max(lh, rh) + 1
 
     def isBalanced(self, root: Optional[TreeNode]) -> bool:
-        return False if self.binaryTreeHeight(root) == -1 else True
+        return self.binaryTreeHeight(root) != -1
         
 
         
