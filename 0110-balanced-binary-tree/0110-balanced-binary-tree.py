@@ -9,7 +9,6 @@ class Solution:
         if not root:
             return 0
         
-        
         lh = self.binaryTreeHeight(root.left)
         if lh == -1:
             return -1
