@@ -8,25 +8,26 @@ class Solution:
     def createBinaryTree(self, descriptions: List[List[int]]) -> Optional[TreeNode]:
         
         nodes_map = defaultdict(TreeNode)
-        parents = set()
-        for parent, child, _ in descriptions:
-            if parent not in parents:
-                parents.add(parent)
+        children = set()
+        for parent, child, is_left in descriptions:
+            
+            children.add(child)
             if parent not in nodes_map:
                 nodes_map[parent] = TreeNode(parent)
             if child not in nodes_map:
                 nodes_map[child] = TreeNode(child)
-        
-        for parent, child, is_left in descriptions:
-            if child in parents:
-                parents.remove(child)
             if is_left:
                 nodes_map[parent].left = nodes_map[child]
             else:
                 nodes_map[parent].right = nodes_map[child]
+
+
+        for key in nodes_map.keys():
+            if key not in children:
+                return nodes_map[key]
+
         
-        return nodes_map[list(parents)[0]]
-        
+
                 
             
         
