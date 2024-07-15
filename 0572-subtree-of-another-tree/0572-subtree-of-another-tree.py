@@ -25,7 +25,7 @@ class Solution:
             return False
                                                                                 
         if root.val == subRoot.val: 
-            if self.isSameTree(root.left, subRoot.left) and self.isSameTree(root.right, subRoot.right):
+            if self.isSameTree(root, subRoot):
                 return True
         return self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot)
             
