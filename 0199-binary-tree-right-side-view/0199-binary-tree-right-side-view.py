@@ -12,8 +12,7 @@ class Solution(object):
         """
         if not root:
             return []
-        queue = deque()
-        queue.append(root)
+        queue = deque([root])
         res = []
         while queue:
             n = len(queue)
