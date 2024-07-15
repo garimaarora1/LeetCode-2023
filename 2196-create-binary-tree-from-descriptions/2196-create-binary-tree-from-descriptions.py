@@ -21,15 +21,6 @@ class Solution:
             else:
                 nodes_map[parent].right = nodes_map[child]
 
-
         for key in nodes_map.keys():
             if key not in children:
                 return nodes_map[key]
-
-        
-
-                
-            
-        
-        
-        
