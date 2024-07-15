@@ -8,6 +8,7 @@ class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         
         def dfs(root, mini, maxi):
+            # important
             if not root:
                 return True
             # important to compare mini and maxi with None
