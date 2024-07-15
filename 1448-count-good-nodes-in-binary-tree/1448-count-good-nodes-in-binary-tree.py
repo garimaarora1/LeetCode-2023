@@ -4,6 +4,7 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+# find the count of nodes greater than or equal to the root node value 
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
         def pre_order_traversal(root, max_so_far):
