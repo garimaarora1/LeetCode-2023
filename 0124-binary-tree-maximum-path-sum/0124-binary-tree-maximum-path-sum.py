@@ -8,14 +8,15 @@ class Solution:
     maxi = float('-inf')
     def maxPathSum(self, root: Optional[TreeNode]) -> int:
         
-        def dfs(root):
+        def _maxPathSum(root):
             if not root:
                 return 0
-            l = max(0, dfs(root.left))
-            r = max(0, dfs(root.right))
-            self.maxi = max(self.maxi, l + r + root.val)
-            return max(l,r) + root.val
-    
-        dfs(root)
+            left_path = max(_maxPathSum(root.left), 0)
+            right_path = max(_maxPathSum(root.right), 0)
+            self.maxi = max(self.maxi, left_path + right_path + root.val)
+
+            return max(left_path, right_path) + root.val
+        
+        _maxPathSum(root)
         return self.maxi
         
