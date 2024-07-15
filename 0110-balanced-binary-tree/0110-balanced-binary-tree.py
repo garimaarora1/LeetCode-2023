@@ -5,24 +5,24 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    ans = True
-
     def binaryTreeHeight(self, root):
         if not root:
             return 0
         
-        lh = self.binaryTreeHeight(root.left)
-        rh = self.binaryTreeHeight(root.right)
         
+        lh = self.binaryTreeHeight(root.left)
+        if lh == -1:
+            return -1
+        rh = self.binaryTreeHeight(root.right)
+        if rh == -1:
+            return -1
         if abs(lh-rh) > 1:
-            self.ans = False
-            return 0
+            return -1
         
         return max(lh, rh) + 1
 
     def isBalanced(self, root: Optional[TreeNode]) -> bool:
-        self.binaryTreeHeight(root)
-        return self.ans
+        return False if self.binaryTreeHeight(root) == -1 else True
         
 
         
