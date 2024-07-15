@@ -8,18 +8,18 @@ class Solution:
     maxi = 0
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
         
-        def _diameterOfBinaryTree(root):
+        def heightOfBinaryTree(root):
             if not root:
                 return 0
 
-            left_height = _diameterOfBinaryTree(root.left)
-            right_height = _diameterOfBinaryTree(root.right)
+            left_height = heightOfBinaryTree(root.left)
+            right_height = heightOfBinaryTree(root.right)
 
             self.maxi = max(self.maxi, left_height + right_height)
 
             return max(left_height, right_height) + 1
 
-        _diameterOfBinaryTree(root)
+        heightOfBinaryTree(root)
         return self.maxi
         
         
