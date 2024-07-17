@@ -6,22 +6,23 @@
 #         self.right = right
 class Solution:
     def delNodes(self, root: Optional[TreeNode], to_delete: List[int]) -> List[TreeNode]:
+        
+        to_delete_set = set(to_delete)    
         res = []
-        to_delete_set = set(to_delete)
-    
-        def helper(root, is_root):
+
+        def _delNodes(root, is_root):
             if not root:
-                return None
-            
+                return
             is_deleted = root.val in to_delete_set
             
             if is_root and not is_deleted:
-                res.append(root)
-            root.left = helper(root.left, is_deleted)
-            root.right = helper(root.right, is_deleted)
-            
+                res.append(root)    
+
+            root.left = _delNodes(root.left, is_deleted)
+            root.right = _delNodes(root.right, is_deleted)
+                
             return None if is_deleted else root
-        
-        helper(root, True)
+
+        _delNodes(root, True)
         return res
-            
+        
