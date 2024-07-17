@@ -9,21 +9,31 @@
  *     TreeNode(int val, TreeNode left, TreeNode right) {
  *         this.val = val;
  *         this.left = left;
- *         this.right = right;
+ *         this.right = right; 
  *     }
  * }
  */
 class Solution {
-    public ArrayList<Integer> inorder(TreeNode root, ArrayList<Integer> res) {
-        if (root == null) return res;
-        inorder(root.left, res);
-        res.add(root.val);
-        inorder(root.right, res);
-        return res;
+    private int count;
+    private int result;
+
+    private void inorder(TreeNode root, int k) {
+        if (root == null) return;
+        
+        inorder(root.left, k);
+        
+        count++;
+        if (count == k) {
+            result = root.val;
+            return;
+        }
+        
+        inorder(root.right, k);
     }
 
     public int kthSmallest(TreeNode root, int k) {
-        ArrayList<Integer> res = inorder(root, new ArrayList<Integer>());
-        return res.get(k-1);
+        count = 0;
+        inorder(root, k);
+        return result;
     }
 }
