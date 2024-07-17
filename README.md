@@ -11,18 +11,21 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Tree
 |  |
 | ------- |
+| [0235-lowest-common-ancestor-of-a-binary-search-tree](https://github.com/garimaarora1/LeetCode-2023/tree/master/0235-lowest-common-ancestor-of-a-binary-search-tree) |
 | [0297-serialize-and-deserialize-binary-tree](https://github.com/garimaarora1/LeetCode-2023/tree/master/0297-serialize-and-deserialize-binary-tree) |
 | [0572-subtree-of-another-tree](https://github.com/garimaarora1/LeetCode-2023/tree/master/0572-subtree-of-another-tree) |
 | [2217-step-by-step-directions-from-a-binary-tree-node-to-another](https://github.com/garimaarora1/LeetCode-2023/tree/master/2217-step-by-step-directions-from-a-binary-tree-node-to-another) |
 ## Depth-First Search
 |  |
 | ------- |
+| [0235-lowest-common-ancestor-of-a-binary-search-tree](https://github.com/garimaarora1/LeetCode-2023/tree/master/0235-lowest-common-ancestor-of-a-binary-search-tree) |
 | [0297-serialize-and-deserialize-binary-tree](https://github.com/garimaarora1/LeetCode-2023/tree/master/0297-serialize-and-deserialize-binary-tree) |
 | [0572-subtree-of-another-tree](https://github.com/garimaarora1/LeetCode-2023/tree/master/0572-subtree-of-another-tree) |
 | [2217-step-by-step-directions-from-a-binary-tree-node-to-another](https://github.com/garimaarora1/LeetCode-2023/tree/master/2217-step-by-step-directions-from-a-binary-tree-node-to-another) |
 ## Binary Tree
 |  |
 | ------- |
+| [0235-lowest-common-ancestor-of-a-binary-search-tree](https://github.com/garimaarora1/LeetCode-2023/tree/master/0235-lowest-common-ancestor-of-a-binary-search-tree) |
 | [0297-serialize-and-deserialize-binary-tree](https://github.com/garimaarora1/LeetCode-2023/tree/master/0297-serialize-and-deserialize-binary-tree) |
 | [0572-subtree-of-another-tree](https://github.com/garimaarora1/LeetCode-2023/tree/master/0572-subtree-of-another-tree) |
 | [2217-step-by-step-directions-from-a-binary-tree-node-to-another](https://github.com/garimaarora1/LeetCode-2023/tree/master/2217-step-by-step-directions-from-a-binary-tree-node-to-another) |
@@ -42,4 +45,8 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [0572-subtree-of-another-tree](https://github.com/garimaarora1/LeetCode-2023/tree/master/0572-subtree-of-another-tree) |
+## Binary Search Tree
+|  |
+| ------- |
+| [0235-lowest-common-ancestor-of-a-binary-search-tree](https://github.com/garimaarora1/LeetCode-2023/tree/master/0235-lowest-common-ancestor-of-a-binary-search-tree) |
 <!---LeetCode Topics End-->
