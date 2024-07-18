@@ -9,7 +9,7 @@ class Solution {
             currFreq = freqMap.getOrDefault(s.charAt(j), 0);
             freqMap.put(s.charAt(j), ++currFreq);
             
-            while((j-i+1)-Collections.max(freqMap.values())>k) {
+            while((j-i+1) - Collections.max(freqMap.values())>k) {
                 currFreq = freqMap.get(s.charAt(i));
                 freqMap.put(s.charAt(i), --currFreq);
                 ++i;
