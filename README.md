@@ -93,4 +93,12 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [0122-best-time-to-buy-and-sell-stock-ii](https://github.com/garimaarora1/LeetCode-2023/tree/master/0122-best-time-to-buy-and-sell-stock-ii) |
+## Linked List
+|  |
+| ------- |
+| [0021-merge-two-sorted-lists](https://github.com/garimaarora1/LeetCode-2023/tree/master/0021-merge-two-sorted-lists) |
+## Recursion
+|  |
+| ------- |
+| [0021-merge-two-sorted-lists](https://github.com/garimaarora1/LeetCode-2023/tree/master/0021-merge-two-sorted-lists) |
 <!---LeetCode Topics End-->
