@@ -6,8 +6,8 @@
 #         self.right = right
 class Solution:
     def buildTree(self, inorder: List[int], postorder: List[int]) -> Optional[TreeNode]:
-        
-        def build_tree(left, right):
+
+        def _build_tree(left, right):
             if left > right:
                 return
             nonlocal postorder_idx
@@ -16,8 +16,8 @@ class Solution:
             
             root = TreeNode(root_val)
             
-            root.right = build_tree(inorder_map[root_val]+1, right)
-            root.left = build_tree(left, inorder_map[root_val]-1)
+            root.right = _build_tree(inorder_map[root_val]+1, right)
+            root.left = _build_tree(left, inorder_map[root_val]-1)
             
             return root
 
@@ -30,7 +30,7 @@ class Solution:
         for i, val in enumerate(inorder):
             inorder_map[val] = i
             
-        root = build_tree(left, right)
+        root = _build_tree(left, right)
         
         return root
         
