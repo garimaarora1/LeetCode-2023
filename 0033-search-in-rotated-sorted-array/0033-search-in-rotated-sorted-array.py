@@ -6,8 +6,12 @@ class Solution:
             if nums[mid] == target:
                 return mid
             
+            # important for duplicates
+            if nums[low] == nums[mid] == nums[high]:
+                low += 1
+                high -= 1
             # sorted left array
-            if nums[low] <= nums[mid]:
+            elif nums[low] <= nums[mid]:
                 if nums[low] <= target <= nums[mid]:
                     high = mid - 1
                 else:
