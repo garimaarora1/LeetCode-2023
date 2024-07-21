@@ -10,7 +10,7 @@ class Solution:
                 manhattan_distance = abs(x1-x2) + abs(y1-y2)
                 cost[i].append((manhattan_distance, j))
                 cost[j].append((manhattan_distance, i))
-        
+
         visited = set()
         visited.add(0)
         heap = cost[0]
