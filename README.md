@@ -73,6 +73,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0122-best-time-to-buy-and-sell-stock-ii](https://github.com/garimaarora1/LeetCode-2023/tree/master/0122-best-time-to-buy-and-sell-stock-ii) |
 | [0123-best-time-to-buy-and-sell-stock-iii](https://github.com/garimaarora1/LeetCode-2023/tree/master/0123-best-time-to-buy-and-sell-stock-iii) |
 | [0188-best-time-to-buy-and-sell-stock-iv](https://github.com/garimaarora1/LeetCode-2023/tree/master/0188-best-time-to-buy-and-sell-stock-iv) |
+| [1706-min-cost-to-connect-all-points](https://github.com/garimaarora1/LeetCode-2023/tree/master/1706-min-cost-to-connect-all-points) |
 ## Hash Table
 |  |
 | ------- |
@@ -101,4 +102,16 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [0021-merge-two-sorted-lists](https://github.com/garimaarora1/LeetCode-2023/tree/master/0021-merge-two-sorted-lists) |
+## Union Find
+|  |
+| ------- |
+| [1706-min-cost-to-connect-all-points](https://github.com/garimaarora1/LeetCode-2023/tree/master/1706-min-cost-to-connect-all-points) |
+## Graph
+|  |
+| ------- |
+| [1706-min-cost-to-connect-all-points](https://github.com/garimaarora1/LeetCode-2023/tree/master/1706-min-cost-to-connect-all-points) |
+## Minimum Spanning Tree
+|  |
+| ------- |
+| [1706-min-cost-to-connect-all-points](https://github.com/garimaarora1/LeetCode-2023/tree/master/1706-min-cost-to-connect-all-points) |
 <!---LeetCode Topics End-->
