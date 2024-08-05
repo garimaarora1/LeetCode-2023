@@ -3,7 +3,9 @@ class Solution:
         parentheses_map = {'}': '{', ']': '[', ')': '('}
         stack = []
         for bracket in s:
-            if bracket in parentheses_map.keys() and stack and stack[-1] == parentheses_map[bracket]:
+            if bracket in parentheses_map:
+                if not stack or stack[-1] != parentheses_map[bracket]:
+                    return False
                 stack.pop()
             else:
                 stack.append(bracket)
