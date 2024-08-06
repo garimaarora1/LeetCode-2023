@@ -1,49 +1,33 @@
 class Solution:
-    def threeSum(self, nums: List[int]) -> List[List[int]]:
-        
-        # Step 1: split nums in three lists of positives, negatives and zeroes
-        p, n, z = [], [], []
-        ans = set()
-        for num in nums:
-            if num > 0:
-                p.append(num)
-            elif num < 0:
-                n.append(num)
+    def two_sum(self, nums, target):
+        first, second = 0, len(nums)-1
+        res = []
+        while first < second:
+            curr_sum = nums[first] + nums[second]
+            if curr_sum == target:
+                res.append([nums[first], nums[second]])
+                first += 1
+                second -= 1
+                while first < second and nums[first] == nums[first-1]:
+                    first += 1
+                while first < second and nums[second] == nums[second+1]:
+                    second -= 1
+            elif curr_sum < target:
+                first += 1
             else:
-                z.append(num)
-        
-                
-        # Step 2: makep positivies and negatives sets for O(1) lookup 
-        p_set = set(p)
-        n_set = set(n)
-        
-        # Step-3: if there is atleast 1 zero, check for the case where num and -num also exist
-        
-        if z:
-            for num in p_set:
-                if -num in n_set:
-                    ans.add((-num, 0, num))
-        
-        # Step-4: if there are at least 3 zeroes, at (0,0,0) to the answer
-        
-        if len(z) >= 3:
-            ans.add((0,0,0))
+                second -= 1
+        return res
+                    
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        ans = []
+        nums.sort()
+        for i, val in enumerate(nums):
+            if i > 0 and nums[i] == nums[i-1]:
+                continue
             
-        # Step-5: for every pair of element in positives, check for the compliment in negatives
-        
-        for i in range(len(p)):
-            for j in range(i+1, len(p)):
-                target = -(p[i]+p[j])
-                if target in n_set:
-                    ans.add(tuple(sorted([p[i], p[j], target])))
-                    
-                    
-        # Step-6: for every pair of element in negatives, check for the compliment in positives
-        
-        for i in range(len(n)):
-            for j in range(i+1, len(n)):
-                target = -(n[i]+n[j])
-                if target in p_set:
-                    ans.add(tuple(sorted([n[i], n[j], target])))
+            target = -nums[i]
+            two_sum_result = self.two_sum(nums[i+1:], target)
+            for res in two_sum_result:
+                ans.append([nums[i]] + res)
         return ans
-            
+        
