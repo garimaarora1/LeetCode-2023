@@ -6,8 +6,6 @@
 #         self.right = right
 class Solution:
     def findTarget(self, root: Optional[TreeNode], k: int) -> bool:
-        if not root:
-            return false
         queue = deque()
         unique_elements = set()
         
