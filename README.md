@@ -6,6 +6,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## String
 |  |
 | ------- |
+| [0003-longest-substring-without-repeating-characters](https://github.com/garimaarora1/LeetCode-2023/tree/master/0003-longest-substring-without-repeating-characters) |
 | [0211-design-add-and-search-words-data-structure](https://github.com/garimaarora1/LeetCode-2023/tree/master/0211-design-add-and-search-words-data-structure) |
 | [0297-serialize-and-deserialize-binary-tree](https://github.com/garimaarora1/LeetCode-2023/tree/master/0297-serialize-and-deserialize-binary-tree) |
 | [2217-step-by-step-directions-from-a-binary-tree-node-to-another](https://github.com/garimaarora1/LeetCode-2023/tree/master/2217-step-by-step-directions-from-a-binary-tree-node-to-another) |
@@ -80,6 +81,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Hash Table
 |  |
 | ------- |
+| [0003-longest-substring-without-repeating-characters](https://github.com/garimaarora1/LeetCode-2023/tree/master/0003-longest-substring-without-repeating-characters) |
 | [0105-construct-binary-tree-from-preorder-and-inorder-traversal](https://github.com/garimaarora1/LeetCode-2023/tree/master/0105-construct-binary-tree-from-preorder-and-inorder-traversal) |
 ## Divide and Conquer
 |  |
@@ -121,4 +123,8 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [0211-design-add-and-search-words-data-structure](https://github.com/garimaarora1/LeetCode-2023/tree/master/0211-design-add-and-search-words-data-structure) |
+## Sliding Window
+|  |
+| ------- |
+| [0003-longest-substring-without-repeating-characters](https://github.com/garimaarora1/LeetCode-2023/tree/master/0003-longest-substring-without-repeating-characters) |
 <!---LeetCode Topics End-->
