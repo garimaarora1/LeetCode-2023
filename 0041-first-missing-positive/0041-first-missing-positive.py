@@ -1,10 +1,8 @@
 class Solution:
     def firstMissingPositive(self, arr: List[int]) -> int:
-        n = len(arr)
-
         # Step 1: Segregate positive numbers from others
         j = 0
-        for i in range(n):
+        for i in range(len(arr)):
             if arr[i] <= 0:
                 arr[i], arr[j] = arr[j], arr[i]
                 j += 1
@@ -12,7 +10,7 @@ class Solution:
         # Step 2: Operate on the positive part of the array
         arr = arr[j:]
         n = len(arr)
-        print(arr)
+
         # Step 3: Mark the presence of elements
         for i in range(n):
             val = abs(arr[i])
