@@ -6,7 +6,8 @@ class Solution:
             if i==len(nums):
                 res.append(nums[:])
                 return
-
+            
+            # there should not be a duplicate for same position at a level 
             s=set()    
             for j in range(i,len(nums)):
                 if nums[j] in s:
