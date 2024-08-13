@@ -1,26 +1,20 @@
-from typing import List
-
 class Solution:
     def permuteUnique(self, nums: List[int]) -> List[List[int]]:
-        ans = []
-        curr_ans = []
-        n = len(nums)
-        nums.sort()
+        res=[]
+        # nums.sort()
         
-        def dfs(used):
-            if len(curr_ans) == n:
-                ans.append(list(curr_ans))
+        def dfs(i,res):
+            if i==len(nums):
+                res.append(nums[:])
                 return
-            
-            for j in range(n):
-                if used[j] or (j > 0 and nums[j] == nums[j-1] and not used[j-1]):
+            s=set()    
+            for j in range(i,len(nums)):
+                if nums[j] in s:
                     continue
-                
-                curr_ans.append(nums[j])
-                used[j] = True
-                dfs(used)
-                used[j] = False
-                curr_ans.pop()
+                s.add(nums[j])    
+                nums[i],nums[j]=nums[j],nums[i]
+                dfs(i+1,res)   
+                nums[i],nums[j]=nums[j],nums[i]    
 
-        dfs([False] * n)
-        return ans
+        dfs(0,res)
+        return res
