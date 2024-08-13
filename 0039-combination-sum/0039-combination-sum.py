@@ -1,25 +1,22 @@
-class Solution(object):
-    def combinationSum(self, candidates, target):
-        """
-        :type candidates: List[int]
-        :type target: int
-        :rtype: List[List[int]]
-        """
-        def backtrack(i, subset,current_sum):
-            # base condition
-            if current_sum == target:
-                res.append(subset[:])
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        ans = []
+        curr_ans = []
+        n = len(candidates)
+        def dfs(i, curr_ans, curr_sum):
+            if curr_sum == target:
+                ans.append(curr_ans.copy())
                 return
-            if i == len(candidates):
-                return 
-            for j in range(i,len(candidates)):
-                if current_sum + candidates[j] > target:
-                    continue
-                subset.append(candidates[j])
-                # choose as many timesss
-                backtrack(j, subset, current_sum + candidates[j])
-                subset.pop()  
-                
-        res=[]
-        backtrack(0, [], 0)
-        return res
+            if curr_sum > target:
+                return
+            
+            for j in range(i, n):
+                curr_ans.append(candidates[j])
+                curr_sum += candidates[j]
+                dfs(j, curr_ans, curr_sum)
+                curr_sum -= curr_ans.pop()
+        
+        dfs(0, curr_ans, 0)
+        
+        return ans
+        
