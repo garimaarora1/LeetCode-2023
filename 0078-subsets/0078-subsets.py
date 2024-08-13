@@ -3,6 +3,7 @@ class Solution:
         ans = []
         curr_ans = []
         n = len(nums)
+
         def dfs(i, curr_ans):
             ans.append(curr_ans.copy())
             
