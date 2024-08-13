@@ -4,7 +4,6 @@ class Solution:
         curr_ans = []
         n = len(nums)
         def dfs(i, curr_ans):
-            # print(curr_ans)
             if len(curr_ans) == n:
                 ans.append(curr_ans.copy())
                 return
