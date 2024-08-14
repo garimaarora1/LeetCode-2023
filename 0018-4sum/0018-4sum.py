@@ -4,9 +4,10 @@ class Solution:
         ans = []
         n = len(nums)
         for i in range(n):
+            if i > 0 and nums[i] == nums[i-1]:
+                    continue
             for j in range(i+1, n):
-                # if j > i and nums[j] == nums[j-1]:
-                #     continue
+                
                 goal = target - nums[i] - nums[j]
                 
                 start = j + 1
