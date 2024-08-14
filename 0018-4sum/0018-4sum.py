@@ -7,7 +7,8 @@ class Solution:
             if i > 0 and nums[i] == nums[i-1]:
                     continue
             for j in range(i+1, n):
-                
+                if j > i+1 and nums[j] == nums[j-1]:
+                    continue
                 goal = target - nums[i] - nums[j]
                 
                 start = j + 1
@@ -16,7 +17,7 @@ class Solution:
                 while start < end:
                     curr_sum = nums[start] + nums[end]
                     if curr_sum == goal:
-                        ans.append((nums[i], nums[j], nums[start], nums[end]))
+                        ans.append([nums[i], nums[j], nums[start], nums[end]])
                         start += 1
                         end -= 1
                         
@@ -28,7 +29,7 @@ class Solution:
                         start += 1
                     else:
                         end -= 1
-        return set(ans)
+        return ans
                         
                 
                 
