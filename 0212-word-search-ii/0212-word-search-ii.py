@@ -37,7 +37,7 @@ class Solution:
             if curr_node.end_of_word == True:
                 res.append(curr_word)
                 trie_obj.remove_word(curr_word)
-                curr_node.end_of_word = False
+                # curr_node.end_of_word = False
             for dx, dy in directions:
                 x = i + dx
                 y = j + dy
