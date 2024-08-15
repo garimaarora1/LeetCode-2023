@@ -2,7 +2,7 @@ class TrieNode:
     def __init__(self):
         self.children = defaultdict(TrieNode)
         self.end_of_word = False
-        self.word = None
+        # self.word = None
 
 class Trie:
     def __init__(self):
@@ -16,23 +16,24 @@ class Trie:
                 curr.children[ch] = TrieNode()
             curr = curr.children[ch]
         curr.end_of_word = True
-        curr.word = word
+        # curr.word = word
 
-    def get_words_from_prefix(self, prefix):
-        def dfs(curr, res):
+    def get_words_from_prefix(self, prefix, word):
+        def dfs(curr, word, res):
             if len(res) == 3:
-                return res
+                return
             if curr.end_of_word == True:
-                res.append(curr.word)
+                res.append(word)
+            if not curr.children:
+                return
             for i in range(26):
                 ch  = chr(ord('a') + i)
                 if ch not in curr.children:
                     continue
-                dfs(curr.children[ch], res)
+                dfs(curr.children[ch], word+ch, res)
         self.curr_prefix_node = self.curr_prefix_node.children[prefix]
-        curr = self.curr_prefix_node
         res = []
-        dfs(curr, res)
+        dfs(self.curr_prefix_node, word, res)
         
         return res
         
@@ -43,7 +44,9 @@ class Solution:
         for product in products:
             trie_obj.insert_word(product)
         search_suggestions = []
+        word = ''
         for ch in searchWord:
-            search_suggestions.append(trie_obj.get_words_from_prefix(ch))
+            word += ch
+            search_suggestions.append(trie_obj.get_words_from_prefix(ch, word))
         
         return search_suggestions
