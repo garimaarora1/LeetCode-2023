@@ -10,7 +10,6 @@ class Trie:
     
     def add_word(self, word):
         curr = self.root
-        # curr.reference += 1
         for ch in word:
             if ch not in curr.children:
                 curr.children[ch] = TrieNode()
@@ -21,7 +20,6 @@ class Trie:
         
     def remove_word(self, word):
         curr = self.root
-        # curr.reference -= 1
         for ch in word:
             curr.children[ch].reference -= 1
             curr = curr.children[ch]
