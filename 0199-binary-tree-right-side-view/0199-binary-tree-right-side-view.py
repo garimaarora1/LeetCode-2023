@@ -12,16 +12,23 @@ class Solution(object):
         """
         if not root:
             return []
-        queue = deque([root])
-        res = []
+        
+        queue = deque()
+        queue.append(root)
+        
+        right_side_view = []
+        
         while queue:
             n = len(queue)
             for i in range(n):
-                root = queue.popleft()
-                if root.left:
-                    queue.append(root.left)
-                if root.right:
-                    queue.append(root.right)
+                node = queue.popleft()
                 if i == n-1:
-                    res.append(root.val)
-        return res
+                    right_side_view.append(node.val)
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+        return right_side_view
+                
+                
+                
