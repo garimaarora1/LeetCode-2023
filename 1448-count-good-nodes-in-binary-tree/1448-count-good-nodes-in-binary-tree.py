@@ -4,19 +4,24 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-# find the count of nodes greater than or equal to the root node value 
 class Solution:
+    count = 0
     def goodNodes(self, root: TreeNode) -> int:
-        def pre_order_traversal(root, max_so_far):
+        
+        def pre_order_traversal(root, max_seen_so_far):
             if not root:
-                return
-            nonlocal count
+                return 
+            if root.val >= max_seen_so_far:
+                self.count += 1
+                max_seen_so_far = root.val
             
-            if root.val >= max_so_far:
-                count += 1
-            pre_order_traversal(root.left, max(max_so_far, root.val))
-            pre_order_traversal(root.right, max(max_so_far, root.val))
-                    
-        count = 0
-        pre_order_traversal(root, float('-inf'))
-        return count
+            pre_order_traversal(root.left, max_seen_so_far)
+            pre_order_traversal(root.right, max_seen_so_far)
+            
+        
+        pre_order_traversal(root, root.val)
+        return self.count
+        
+        
+        
+        
