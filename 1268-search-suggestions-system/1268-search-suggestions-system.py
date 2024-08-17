@@ -1,51 +1,55 @@
 class TrieNode:
+    
     def __init__(self):
-        self.word = None
         self.children = defaultdict(TrieNode)
-
+        self.word = None
+        
 class Trie:
     def __init__(self):
         self.root = TrieNode()
-
-    def addWord(self, word: str):
+        
+    def insert(self, word):
         curr = self.root
         for ch in word:
+            if ch not in curr.children:
+                curr.children[ch] = TrieNode()
             curr = curr.children[ch]
         curr.word = word
-
-    def getWords(self, node, limit):
-        words = []
-
+    
+    def get_words(self, curr, limit):
+        res = []
         def dfs(curr):
-            if len(words) == limit:
+            if len(res) == limit:
                 return
-            if curr.word is not None:
-                words.append(curr.word)
-                
+            if curr.word != None:
+                res.append(curr.word)
             for i in range(26):
                 ch = chr(ord('a') + i)
                 if ch in curr.children:
                     dfs(curr.children[ch])
 
-        dfs(node)
-        return words
-
-    def searchPrefix(self, prefix):
+        dfs(curr)
+        return res
+            
+    def get_suggestions(self, word):
         curr = self.root
-        result = []
-        for ch in prefix:
-            if curr is not None and ch in curr.children:
+        suggestions = []
+
+        for ch in word:
+            if curr != None and ch in curr.children:
                 curr = curr.children[ch]
-                result.append(self.getWords(curr, 3))
+                suggestions.append(self.get_words(curr, 3))
+            
             else:
                 curr = None
-                result.append([])
-        return result
+                suggestions.append([])
+        return suggestions
 
 class Solution:
-    def suggestedProducts(self, products, searchWord):
+    def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
+        
         trie = Trie()
         for product in products:
-            trie.addWord(product)
+            trie.insert(product)
         
-        return trie.searchPrefix(searchWord)
+        return trie.get_suggestions(searchWord)
