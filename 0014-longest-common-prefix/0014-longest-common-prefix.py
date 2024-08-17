@@ -14,26 +14,21 @@ class Trie:
                 curr.children[ch] = TrieNode()
             curr = curr.children[ch]
         curr.end_of_word = True
+    
+    def longest_common_prefix(self):
+        curr = self.root
+        prefix = []
+        while curr and len(curr.children) == 1 and not curr.end_of_word:
+            for ch in curr.children:
+                prefix.append(ch)
+            curr = curr.children[ch]
+        return ''.join(prefix)
+        
 
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
-        trie_obj = Trie()
-        trie_obj.add_word(strs[0])
-        
-        mini = float('inf')
-        if len(strs) == 1:
-            return strs[0]
-        for word in strs[1:]:
-            curr = trie_obj.root
-            curr_count = 0
-            for ch in word:
-                if ch not in curr.children or mini <= curr_count:
-                    break
-                curr = curr.children[ch]
-                curr_count += 1
-            mini = min(mini, curr_count)
-        return strs[0][:mini] if mini != float('inf') else ""
-                
-        
-            
+        trie = Trie()
+        for word in strs:
+            trie.add_word(word)
+        return trie.longest_common_prefix()
         
