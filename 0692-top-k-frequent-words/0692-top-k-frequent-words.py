@@ -52,4 +52,4 @@ class Solution:
                 k = remaining[0]  # Update k to reflect how many more words are needed
         
         # Return the top k words, ensuring only the top k are included
-        return res[:len(res)]  # Ensure to return the exact number of collected words
+        return res # Ensure to return the exact number of collected words
