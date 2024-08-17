@@ -1,5 +1,3 @@
-from collections import Counter
-
 class TrieNode:
     def __init__(self):
         self.children = {}
