@@ -1,42 +1,29 @@
-from collections import Counter
-
+class Pair:
+    
+    def __init__(self, word, freq):
+        self.word = word
+        self.freq = freq
+        
+    def __lt__(self, pair):
+        return self.freq < pair.freq or self.freq == pair.freq and self.word > pair.word
 
 class Solution:
     def topKFrequent(self, words: List[str], k: int) -> List[str]:
-        n = len(words)
-        cnt = Counter(words)
-        bucket = [{} for _ in range(n+1)]
-        self.k = k
-
-        def add_word(trie: Mapping, word: str) -> None:
-            root = trie
-            for c in word:
-                if c not in root:
-                    root[c] = {}
-                root = root[c]
-            root['#'] = {}
-
-        def get_words(trie: Mapping, prefix: str) -> List[str]:
-            if self.k == 0:
-                return []
-            res = []
-            if '#' in trie:
-                self.k -= 1
-                print(prefix)
-                res.append(prefix)
-            for i in range(26):
-                c = chr(ord('a') + i)
-                if c in trie:
-                    res += get_words(trie[c], prefix+c)
-            return res
-
-        for word, freq in cnt.items():
-            add_word(bucket[freq], word)
-
-        res = []
-        for i in range(n, 0, -1):
-            if self.k == 0:
-                return res
-            if bucket[i]:
-                res += get_words(bucket[i], '')
-        return res
+        counter = Counter(words)
+        min_heap = []
+        
+        for word, freq in counter.items():
+            pair = Pair(word, freq)
+            
+            heapq.heappush(min_heap, pair)
+            
+            if len(min_heap) > k:
+                heapq.heappop(min_heap)
+        
+        top_k_freq_words = []
+        while min_heap:
+            pair = heapq.heappop(min_heap)
+            top_k_freq_words.append(pair.word)
+        return top_k_freq_words[::-1]
+        
+        
