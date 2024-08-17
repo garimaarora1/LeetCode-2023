@@ -25,7 +25,7 @@ class Trie:
             remaining[0] -= 1
             print(prefix)
             res.append(prefix)
-        # Iterate through characters from 'a' to 'z' using ord
+
         for i in range(26):
             c = chr(ord('a') + i)
             if c in node.children:
