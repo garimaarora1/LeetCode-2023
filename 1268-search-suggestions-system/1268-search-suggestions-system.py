@@ -1,10 +1,7 @@
-from collections import defaultdict
-from typing import List
-
 class TrieNode:
     def __init__(self):
         self.word = None
-        self.child = defaultdict(TrieNode)
+        self.children = defaultdict(TrieNode)
 
 class Trie:
     def __init__(self):
@@ -12,30 +9,33 @@ class Trie:
 
     def addWord(self, word: str):
         curr = self.root
-        for c in word:
-            curr = curr.child[c]
+        for ch in word:
+            curr = curr.children[ch]
         curr.word = word
 
-    def getWords(self, node: TrieNode, limit: int) -> List[str]:
+    def getWords(self, node, limit):
         words = []
 
-        def dfs(curr: TrieNode):
+        def dfs(curr):
             if len(words) == limit:
                 return
             if curr.word is not None:
                 words.append(curr.word)
-            for c in sorted(curr.child.keys()):
-                dfs(curr.child[c])
+                
+            for i in range(26):
+                ch = chr(ord('a') + i)
+                if ch in curr.children:
+                    dfs(curr.children[ch])
 
         dfs(node)
         return words
 
-    def searchPrefix(self, prefix: str) -> List[List[str]]:
+    def searchPrefix(self, prefix):
         curr = self.root
         result = []
-        for c in prefix:
-            if curr is not None and c in curr.child:
-                curr = curr.child[c]
+        for ch in prefix:
+            if curr is not None and ch in curr.children:
+                curr = curr.children[ch]
                 result.append(self.getWords(curr, 3))
             else:
                 curr = None
@@ -43,7 +43,7 @@ class Trie:
         return result
 
 class Solution:
-    def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
+    def suggestedProducts(self, products, searchWord):
         trie = Trie()
         for product in products:
             trie.addWord(product)
