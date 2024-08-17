@@ -16,9 +16,9 @@ class Trie:
         node.end_of_word = True
 
     def get_words(self, node, prefix, k):
-        # if k == 0:
-        #     return []
         res = []
+        if k == 0:
+            return res
         if node.end_of_word:
             k -= 1
             res.append(prefix)
