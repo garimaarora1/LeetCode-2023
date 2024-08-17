@@ -23,12 +23,15 @@ class Trie:
         res = []
         if node.end_of_word:
             remaining[0] -= 1
+            print(prefix)
             res.append(prefix)
-
-        for c in sorted(node.children.keys()):  
-            res += self.get_words(node.children[c], prefix + c, remaining)
+        # Iterate through characters from 'a' to 'z' using ord
+        for i in range(26):
+            c = chr(ord('a') + i)
+            if c in node.children:
+                res += self.get_words(node.children[c], prefix + c, remaining)
         return res
-    
+
 class Solution:
     def topKFrequent(self, words, k):
         n = len(words)
