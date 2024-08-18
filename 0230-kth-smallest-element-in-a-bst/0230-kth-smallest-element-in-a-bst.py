@@ -1,17 +1,17 @@
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
         
-        def inorder_traversal(root, remaining):
+        def inorder_traversal(root):
+            nonlocal k
             if not root:
                 return None
 
-            left_result = inorder_traversal(root.left, remaining)
+            left_result = inorder_traversal(root.left)
             if left_result is not None:
                 return left_result
-            remaining[0] -= 1
-            if remaining[0] == 0:
+            k -= 1
+            if k == 0:
                 return root.val
 
-            return inorder_traversal(root.right, remaining)
-        remaining = [k]
-        return inorder_traversal(root, remaining)
+            return inorder_traversal(root.right)
+        return inorder_traversal(root)
