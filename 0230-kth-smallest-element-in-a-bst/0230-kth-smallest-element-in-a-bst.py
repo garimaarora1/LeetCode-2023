@@ -2,7 +2,6 @@ class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
         
         def inorder_traversal(root):
-            nonlocal k
             if not root:
                 return None
 
@@ -10,10 +9,10 @@ class Solution:
             if left_result is not None:
                 return left_result
 
-            k -= 1
-            if k == 0:
+            self.k -= 1
+            if self.k == 0:
                 return root.val
 
             return inorder_traversal(root.right)
-        
+        self.k = k
         return inorder_traversal(root)
