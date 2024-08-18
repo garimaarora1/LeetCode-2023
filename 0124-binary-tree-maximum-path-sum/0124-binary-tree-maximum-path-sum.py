@@ -11,11 +11,12 @@ class Solution:
         def dfs(root):
             if not root:
                 return 0
-            l = max(0, dfs(root.left))
-            r = max(0, dfs(root.right))
-            self.maxi = max(self.maxi, l + r + root.val)
-            return max(l,r) + root.val
-    
+
+            left = max(0, dfs(root.left))
+            right = max(0, dfs(root.right))
+            self.maxi = max(self.maxi, left + right + root.val)
+            
+            return max(left, right) + root.val
+        
         dfs(root)
         return self.maxi
-        
