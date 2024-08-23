@@ -5,7 +5,8 @@ class UnionFind:
     def find(self, x):
         if self.parents[x] == x:
             return x
-        return self.find(self.parents[x])
+        self.parents[x] = self.find(self.parents[x])
+        return self.parents[x]
 
     def union(self, x, y):
         parent_x = self.find(x)
@@ -13,9 +14,9 @@ class UnionFind:
         
         if parent_x != parent_y:
             if parent_x < parent_y:
-                self.parents[parent_x] = parent_y
-            else:
                 self.parents[parent_y] = parent_x
+            else:
+                self.parents[parent_x] = parent_y
             
             return True
         return False
