@@ -41,6 +41,7 @@ class Solution:
                         if 0<=dr<row and 0<=dc<col and grid[dr][dc] == '1':
                             pos2 = dr * col + dc
                             if uf.union(pos1, pos2):
+                                print(1)
                                 count -= 1
         return count
                                 
