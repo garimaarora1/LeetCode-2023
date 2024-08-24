@@ -12,10 +12,9 @@ class Solution:
                 ans[node] = node
                 
                 for child in graph[node]:
-                    cand = dfs(child)
-                    if quiet[cand] < quiet[ans[node]]:
-                        ans[node] = cand
-                
+                    person = dfs(child)
+                    if quiet[person] < quiet[ans[node]]:
+                        ans[node] = person
             return ans[node]
                 
         
