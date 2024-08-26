@@ -1,12 +1,14 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        parentheses_map = {'}': '{', ']': '[', ')': '('}
         stack = []
-        for bracket in s:
-            if bracket in parentheses_map:
-                if not stack or stack[-1] != parentheses_map[bracket]:
+        parentheses_map = {')': '(', ']': '[', '}': '{'}
+        for parentheses in s:
+            if parentheses in parentheses_map:
+                if not stack or stack[-1] != parentheses_map[parentheses]:
                     return False
                 stack.pop()
             else:
-                stack.append(bracket)
+                stack.append(parentheses)
+        
         return stack == []
+        
