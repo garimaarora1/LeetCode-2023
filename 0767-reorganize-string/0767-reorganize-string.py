@@ -1,34 +1,30 @@
 class Solution:
     def reorganizeString(self, s: str) -> str:
-        
-        # adding all the values to hash map and storing freq for each ch, key: ch, value: freq
-        counter = defaultdict(int)
-        for ch in s:
-            counter[ch] += 1
-        
-        # add each key value pair to a max heap (freq, ch)
-        heap = []
+        """
+        max heap, counter, prev, res
+        """
+        counter = Counter(s)
+        max_heap = []
         for key, value in counter.items():
-            heap.append((-value, key))
-        heapq.heapify(heap)
-
-        # res, prev
-        res = ''
+            max_heap.append((-value, key))
+        heapq.heapify(max_heap)
+        
         prev = None
+        res = ''
         
-        # loop through the heap
-        while heap or prev:
-            if prev and not heap:
-                return ""
+        while max_heap or prev:
+            if prev and not max_heap:
+                return ''
             
-            freq, ch = heapq.heappop(heap)
-            freq += 1
+            freq, ch = heapq.heappop(max_heap)
+            
             res += ch
+            freq += 1
+            
             if prev:
-                heapq.heappush(heap, prev)
+                heapq.heappush(max_heap, prev)
                 prev = None
-            if freq!=0:
+            
+            if freq != 0:
                 prev = (freq, ch)
-        
-        # return result
         return res
