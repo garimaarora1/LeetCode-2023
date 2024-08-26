@@ -1,32 +1,37 @@
 class Solution:
-    def pacificAtlantic(self, matrix: List[List[int]]) -> List[List[int]]:
-
+    def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
+        directions = [[1, 0], [0, 1], [-1, 0], [0,-1]]
+        
         def bfs(queue):
             visited = set()
-            directions = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+
             while queue:
-                x, y = queue.popleft()
-                visited.add((x, y))
-                for dr, dc in directions: 
-                    dx, dy = x + dr, y + dc
-                    if 0 <= dx < rows and 0 <= dy < cols and (dx, dy) not in visited and matrix[dx][dy] >= matrix[x][y]:
+                i, j = queue.popleft()
+                visited.add((i, j))
+                for dr, dc in directions:
+                    dx = i + dr
+                    dy = j + dc
+                    if 0<=dx<row and 0<=dy<col and heights[dx][dy] >= heights[i][j] and (dx, dy) not in visited:
                         queue.append((dx, dy))
+                        visited.add((dx, dy))
             return visited
-
-
-        rows, cols = len(matrix), len(matrix[0])
-        
-        
+                
+            
         pacific_queue = deque()
         atlantic_queue = deque()
-        for i in range(rows):
+        
+        row = len(heights)
+        col = len(heights[0])
+        
+        for i in range(row):
             pacific_queue.append((i, 0))
-            atlantic_queue.append((i, cols - 1))
-        for i in range(cols):
+            atlantic_queue.append((i, col-1))
+        
+        for i in range(col):
             pacific_queue.append((0, i))
-            atlantic_queue.append((rows - 1, i))
-
+            atlantic_queue.append((row-1, i))
+            
         pacific_reachable = bfs(pacific_queue)
         atlantic_reachable = bfs(atlantic_queue)
-
-        return list(pacific_reachable.intersection(atlantic_reachable))
+        
+        return pacific_reachable.intersection(atlantic_reachable)
