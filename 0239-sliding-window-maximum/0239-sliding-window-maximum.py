@@ -10,19 +10,20 @@ class Solution:
     """
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
         answer = []
-        # indexes, monotonically decreasing
-        queue = deque() 
+        queue = deque() # indexes, monotonically decreasing
         i = j = 0
+        
         while j < len(nums):
             while queue and nums[queue[-1]] < nums[j]:
                 queue.pop()
             queue.append(j)
-
-            if j-i+1 == k:
+            
+            if j - i + 1 == k:
                 answer.append(nums[queue[0]])
                 i += 1
+                
                 if i > queue[0]:
                     queue.popleft()
             j += 1
-
         return answer
+                
