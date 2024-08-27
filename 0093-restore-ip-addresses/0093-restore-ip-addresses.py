@@ -2,13 +2,13 @@ class Solution:
     def restoreIpAddresses(self, s: str) -> List[str]:
         ans = []
         n = len(s)
-        
+        if n < 3 or n > 12:
+            return []
+
         def dfs(i, parts):
-            # Base case: If there are more than 4 parts, return
             if len(parts) > 4:
                 return
             
-            # Base case: If end of string and exactly 4 parts, add to result
             if i == n and len(parts) == 4:
                 ans.append('.'.join(parts))
                 return
