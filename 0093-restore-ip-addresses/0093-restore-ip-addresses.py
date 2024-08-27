@@ -1,26 +1,26 @@
-class Solution(object):
-    def restoreIpAddresses(self, s):
-        """
-        :type s: str
-        :rtype: List[str]
-        """
-        
-        
-        # A valid IP address must be in the form of A.B.C.D, 
-        # where A,B,C and D are numbers from 0-255. 
-        # The numbers cannot be 0 prefixed unless they are 0.
-        def solve(section,idx):
-            if len(section) == 4:
-                if idx >= len(s):
-                    address = ".".join(section)
-                    solutions.append(address)
+class Solution:
+    def restoreIpAddresses(self, s: str) -> List[str]:
+        ans = []
+        n = len(s)
+        def dfs(i, parts):
+            if i == n and len(parts) == 4:
+                ans.append('.'.join(parts))
                 return
-            for i in range(idx,min(len(s),idx+3)):
-                curr = s[idx:i+1]
-                if curr[0] == '0' and len(curr) > 1:
+            
+            for j in range(i, n):
+                # form a part
+                part = s[i: j+1]
+                
+                if len(part) > 1 and part[0] == '0':
                     continue
-                if int(curr) >= 0 and int(curr) <= 255:
-                    solve(section+[curr],i+1) 
-        solutions = []
-        solve([],0)
-        return solutions
+                if len(part) >= 4:
+                    continue
+                
+                if int(part) > 255:
+                    continue
+                parts.append(part)
+                dfs(j+1, parts)
+                parts.pop()
+        
+        dfs(0, [])
+        return ans
