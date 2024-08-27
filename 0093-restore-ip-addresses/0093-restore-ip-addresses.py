@@ -7,7 +7,7 @@ class Solution:
                 ans.append('.'.join(parts))
                 return
             
-            for j in range(i, n):
+            for j in range(i, min(i+3, n)):
                 # form a part
                 part = s[i: j+1]
                 
