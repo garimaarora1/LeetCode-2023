@@ -1,7 +1,8 @@
 class Solution:
     """
-    Find all unique combinations in `candidates` where the candidate numbers sum up       to `target`.
-    Each number in `candidates` can be used an unlimited number of times.
+    - Use Depth-First Search (DFS) to explore all possible combinations.
+    - For each recursive call, consider only the current index and onwards to avoid         permutations of the same combination.
+    - Ensure each number can be used multiple times but avoid revisiting previous           indices to avoid duplicate combinations.
     Time Complexity: O(2^N) where N is the length of `candidates`
     Space Complexity: O(N) where N is the length of the current combination
     """
