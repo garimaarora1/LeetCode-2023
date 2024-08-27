@@ -12,12 +12,12 @@ class Solution:
                 part = s[i: j+1]
                 
                 if len(part) > 1 and part[0] == '0':
-                    continue
+                    return
                 if len(part) >= 4:
-                    continue
+                    return
                 
                 if int(part) > 255:
-                    continue
+                    return
                 parts.append(part)
                 dfs(j+1, parts)
                 parts.pop()
