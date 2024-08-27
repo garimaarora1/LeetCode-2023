@@ -15,9 +15,9 @@ class Solution:
                     return
                 if len(part) >= 4:
                     return
-                
                 if int(part) > 255:
                     return
+                print(part)
                 parts.append(part)
                 dfs(j+1, parts)
                 parts.pop()
