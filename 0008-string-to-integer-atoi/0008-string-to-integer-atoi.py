@@ -25,7 +25,7 @@ class Solution:
             digit = int(s[i])
             
             if result > (2 ** 31 - 1 - digit) // 10:
-                return 2 ** 31 -1 if sign == 1 else - 2 ** 31
+                return 2 ** 31 - 1 if sign == 1 else -2 ** 31
             
             result = result * 10 + digit
             i += 1
