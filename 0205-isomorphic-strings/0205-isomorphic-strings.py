@@ -2,17 +2,14 @@ class Solution:
     def isIsomorphic(self, s: str, t: str) -> bool:
         if len(s) != len(t):
             return False
-        map_dict = defaultdict(str)
+        isomorphic_map = defaultdict(str)
+        
         for i in range(len(s)):
-            if s[i] not in map_dict:
-                if t[i] in map_dict.values():
+            if s[i] not in isomorphic_map:
+                if t[i] in isomorphic_map.values():
                     return False
-                map_dict[s[i]] = t[i]
-                
+                isomorphic_map[s[i]] = t[i]
             else:
-                if map_dict[s[i]] != t[i]:
+                if isomorphic_map[s[i]] != t[i]:
                     return False
         return True
-    
-        
-        
