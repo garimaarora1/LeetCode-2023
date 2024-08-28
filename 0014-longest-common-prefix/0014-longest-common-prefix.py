@@ -1,13 +1,15 @@
 class TrieNode:
+    
     def __init__(self):
-        self.children = defaultdict(TrieNode)
+        self.children = {}
         self.end_of_word = False
 
 class Trie:
+    
     def __init__(self):
         self.root = TrieNode()
     
-    def add_word(self, word):
+    def insert(self, word):
         curr = self.root
         for ch in word:
             if ch not in curr.children:
@@ -15,20 +17,18 @@ class Trie:
             curr = curr.children[ch]
         curr.end_of_word = True
     
-    def longest_common_prefix(self):
+    def get_longest_common_prefix(self):
         curr = self.root
-        prefix = []
-        while curr and len(curr.children) == 1 and not curr.end_of_word:
+        res = ''
+        while len(curr.children) == 1 and not curr.end_of_word:
             for ch in curr.children:
-                prefix.append(ch)
+                res += ch
             curr = curr.children[ch]
-        return ''.join(prefix)
-        
-
+        return res
+                
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
         trie = Trie()
         for word in strs:
-            trie.add_word(word)
-        return trie.longest_common_prefix()
-        
+            trie.insert(word)
+        return trie.get_longest_common_prefix()
