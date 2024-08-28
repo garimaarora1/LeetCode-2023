@@ -1,20 +1,21 @@
 class Solution:
     def trap(self, height: List[int]) -> int:
-        
-        # two pointes, left, right, lmax, rmax, ans
         if not height:
             return 0
-        l, r = 0, len(height)-1
-        lmax, rmax = height[l], height[r]
+        l = 0
+        r = len(height) - 1
+        l_max = height[l]
+        r_max = height[r]
         res = 0
+    
         while l < r:
-            if lmax < rmax:
+            if l_max < r_max:
                 l += 1
-                lmax = max(lmax, height[l])
-                res += lmax - height[l]
+                l_max = max(l_max, height[l])
+                res += l_max - height[l]
             else:
                 r -= 1
-                rmax = max(rmax, height[r])
-                res += rmax - height[r]
+                r_max = max(r_max, height[r])
+                res += r_max - height[r]
         return res
         
