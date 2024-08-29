@@ -1,15 +1,16 @@
 class Solution:
     def minimumPushes(self, word: str) -> int:
-        freq_map = Counter(word)
-        heap = [-freq for freq in freq_map.values()]
+        counter = Counter(word)
+        # max heap
+        heap = [-value for value in counter.values()]
         heapq.heapify(heap)
-        key, row = 0, 0
-        min_count = 0
+        row = 1
+        key = 0
+        total_key_pushes = 0
         while heap:
-            row = (key // 8) + 1
-            min_count += row * (-heapq.heappop(heap))
+            freq = -heapq.heappop(heap)
+            row = key // 8 + 1
+            total_key_pushes += (freq * row)
             key += 1
-        return min_count
-            
-        
+        return total_key_pushes
         
