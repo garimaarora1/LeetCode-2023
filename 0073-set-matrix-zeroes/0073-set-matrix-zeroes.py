@@ -1,25 +1,32 @@
 class Solution:
-    def setZeroes(self, a: List[List[int]]) -> None:
+    def setZeroes(self, matrix: List[List[int]]) -> None:
         """
         Do not return anything, modify matrix in-place instead.
         """
-        is_row_zero, is_col_zero = False, False
-        for i in range(len(a)):
-            for j in range(len(a[0])):
-                if a[i][j] == 0:
-                    a[i][0], a[0][j] = 0, 0
-                    if i == 0:
+        row = len(matrix)
+        col = len(matrix[0])
+        is_row_zero = False
+        
+        for i in range(row):
+            for j in range(col):
+                if matrix[i][j] == 0:
+                    matrix[0][j] = 0        
+                    if i > 0:
+                        matrix[i][0] = 0
+                    else:
                         is_row_zero = True
-                    if j == 0:
-                        is_col_zero = True
-        for i in range(1, len(a)):
-            for j in range(1, len(a[0])):
-                if a[0][j] == 0 or a[i][0] == 0:
-                    a[i][j] = 0
+        
+        for i in range(1, row):
+            for j in range(1, col):
+                if matrix[0][j] == 0 or matrix[i][0] == 0:
+                    matrix[i][j] = 0
+                    
+        if matrix[0][0] == 0:
+            for i in range(row):
+                matrix[i][0] = 0
+        
         if is_row_zero:
-            for j in range(len(a[0])):
-                a[0][j] = 0
-        if is_col_zero:
-            for i in range(len(a)):
-                a[i][0] = 0
-                
+            for j in range(col):
+                matrix[0][j] = 0
+        
+        
