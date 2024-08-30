@@ -25,8 +25,8 @@ class Solution:
                 low = mid + 1
             else:
                 high = mid - 1
-            """If the loop finishes without directly finding the target, low will point to the first index where the cumulative sum is greater than the target, which is the correct index to return."""
 
+            """If the loop finishes without directly finding the target, low will point to the first index where the cumulative sum is greater than the target, which is the correct index to return."""
         return low
 
 # Your Solution object will be instantiated and called as such:
