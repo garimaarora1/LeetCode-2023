@@ -11,7 +11,8 @@ class Solution:
         """
         n = len(nums)
         k %= n
-        
+        if k == 0:
+            return
         self.reverse(nums, 0, n-1)
         self.reverse(nums, 0, k-1)
         self.reverse(nums, k, n-1)
