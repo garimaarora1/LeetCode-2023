@@ -19,7 +19,7 @@ class Solution(object):
             if dp[i][target] != -1:
                 return dp[i][target]
             
-            if target >= nums[i]:
+            if target - nums[i] >= 0:
                 dp[i][target] = dfs(i + 1, target - nums[i]) or dfs(i + 1, target)
             else:
                 dp[i][target] = dfs(i + 1, target)
