@@ -28,7 +28,9 @@ class Solution:
                 parts.append(part)
                 dfs(j+1, parts)
                 parts.pop()
-
+        
+        
         dfs(0, [])
+        
         return ans
         
