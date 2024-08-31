@@ -18,6 +18,7 @@ class Solution:
             for node in root.children:
                 dfs(node)
             res.append(root.val)
+
         dfs(root)
         
         return res
