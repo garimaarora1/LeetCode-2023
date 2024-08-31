@@ -1,24 +1,33 @@
 class Solution:
     def restoreIpAddresses(self, s: str) -> List[str]:
-        ans = []
+        """
+        n < 3 and n >12
+        part. > 255 --
+        part -- leading zero
+        
+        IP : parts > 4 --
+        i ==n parts == 4 -- 
+        """
+        
         n = len(s)
+        
         if n < 3 or n > 12:
             return []
         
-        def dfs(curr_idx, parts):
+        ans = []
+        
+        def dfs(i, parts):
             
             if len(parts) > 4:
                 return
             
-            if curr_idx == n and len(parts) == 4:
+            if i == n and len(parts) == 4:
                 ans.append('.'.join(parts))
                 return
-            
-            for j in range(curr_idx, min(curr_idx+3, n)):
+
+            for j in range(i, min(i+3, n)):
+                part = s[i:j+1]
                 
-                part = s[curr_idx: j+1]
-                
-                # skip invalid parts
                 if len(part) > 1 and part[0] == '0':
                     return
                 
@@ -28,8 +37,9 @@ class Solution:
                 parts.append(part)
                 dfs(j+1, parts)
                 parts.pop()
-                
+        
         
         dfs(0, [])
         
         return ans
+        
