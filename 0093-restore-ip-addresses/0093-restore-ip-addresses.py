@@ -1,14 +1,5 @@
 class Solution:
     def restoreIpAddresses(self, s: str) -> List[str]:
-        """
-        n < 3 and n >12
-        part. > 255 --
-        part -- leading zero
-        
-        IP : parts > 4 --
-        i ==n parts == 4 -- 
-        """
-        
         n = len(s)
         
         if n < 3 or n > 12:
@@ -37,9 +28,7 @@ class Solution:
                 parts.append(part)
                 dfs(j+1, parts)
                 parts.pop()
-        
-        
+
         dfs(0, [])
-        
         return ans
         
