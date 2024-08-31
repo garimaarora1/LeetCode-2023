@@ -2,7 +2,8 @@ class Solution:
     def countPrimes(self, n: int) -> int:
         if n <= 2:
             return 0
-        numbers = [False, False] + [True] * (n - 2)
+        numbers = [True] * (n)
+        numbers[0] = numbers[1] = False
 
         for p in range(2, int(sqrt(n)) + 1):
             if numbers[p]:
