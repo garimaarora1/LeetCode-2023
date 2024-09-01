@@ -1,7 +1,8 @@
 class Solution:
     def isValid(self, s: str) -> bool:
+        parentheses_map = {'}': '{', ']': '[', ')': '('}
         stack = []
-        parentheses_map = {')': '(', ']': '[', '}': '{'}
+        
         for parentheses in s:
             if parentheses in parentheses_map:
                 if not stack or stack[-1] != parentheses_map[parentheses]:
@@ -9,6 +10,4 @@ class Solution:
                 stack.pop()
             else:
                 stack.append(parentheses)
-        
         return stack == []
-        
