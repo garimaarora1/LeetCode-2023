@@ -3,11 +3,10 @@ class Solution:
         directions = [[1, 0], [0, 1], [-1, 0], [0,-1]]
         
         def bfs(queue):
-            visited = set()
+            visited = set(queue)
 
             while queue:
                 i, j = queue.popleft()
-                visited.add((i, j))
                 for dr, dc in directions:
                     dx = i + dr
                     dy = j + dc
