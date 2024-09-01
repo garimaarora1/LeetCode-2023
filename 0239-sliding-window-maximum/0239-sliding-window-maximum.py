@@ -2,8 +2,8 @@ class Solution:
     """        
     Steps:
     1. Add the new window element to the queue, ensuring it stays monotonically decreasing.
-    2. Remove the element from the front of the queue if the window no longer contains it.
-    3. Add the first element of the queue to the answer on each new window hit.
+    2. Add the first element of the queue to the answer on each new window hit.
+    3. Remove the element from the front of the queue if the window no longer contains it.
 
     Time Complexity: O(n)
     Space Complexity: O(n)
