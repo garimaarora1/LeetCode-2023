@@ -1,29 +1,36 @@
 class Solution:
     def reorganizeString(self, s: str) -> str:
-        char_counts = Counter(s)
-        max_count, letter = 0, ''
-        for char, count in char_counts.items():
-            if count > max_count:
-                max_count = count
-                letter = char
-        if max_count > (len(s) + 1) // 2:
-            return ""
-        ans = [''] * len(s)
-        index = 0
+        counter = Counter(s)
+        n = len(s)
 
-        # Place the most frequent letter
-        while char_counts[letter] != 0:
-            ans[index] = letter
-            index += 2
-            char_counts[letter] -= 1
-
-        # Place rest of the letters in any order
-        for char, count in char_counts.items():
-            while count > 0:
-                if index >= len(s):
-                    index = 1
-                ans[index] = char
-                index += 2
+        # find max freq ch, and max freq
+        max_count = 0
+        max_freq_ch = ''
+        
+        for char, value in counter.items():
+            if value > max_count:
+                max_count = value
+                max_freq_ch = char
+        
+        if max_count > (n + 1) // 2:
+            return ''
+        
+        ans = [''] * n 
+        i = 0
+        
+        # place max freq ch alternatively
+        while counter[max_freq_ch] != 0:
+            ans[i] = max_freq_ch
+            counter[max_freq_ch] -= 1
+            i += 2
+        
+        # place rest of the chars in any order
+        for ch, count in counter.items():
+            while count != 0:
+                if i >= n:
+                    i = 1
+                ans[i] = ch
                 count -= 1
-
+                i += 2
         return ''.join(ans)
+                
