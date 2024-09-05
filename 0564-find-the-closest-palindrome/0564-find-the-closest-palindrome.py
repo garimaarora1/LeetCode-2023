@@ -2,12 +2,12 @@ class Solution:
     def convert(self, num: int) -> int:
         s = str(num)
         n = len(s)
-        l, r = (n - 1) // 2, n // 2
+        l, r = 0, len(s)-1
         s_list = list(s)
-        while l >= 0:
+        while l<=r:
             s_list[r] = s_list[l]
-            r += 1
-            l -= 1
+            r -= 1
+            l += 1
         return int("".join(s_list))
 
     def previous_palindrome(self, num: int) -> int:
