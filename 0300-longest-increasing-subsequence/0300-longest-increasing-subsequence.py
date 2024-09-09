@@ -1,15 +1,29 @@
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
-        n = len(nums)
-        dp = [1] * n
-        maxi = 1
-        for i in range(1, n):
-            for j in range(i):
-                if nums[j] < nums[i]:
-                    dp[i] = max(dp[i], dp[j]+1)
-            maxi = max(maxi, dp[i])
-        return maxi
-                
-                
-                
-        
+        def bisect_left(dp, target):
+            left, right = 0, len(dp)
+
+            # Binary search
+            while left < right:
+                mid = (left + right) // 2
+                if dp[mid] < target:
+                    left = mid + 1
+                else:
+                    right = mid
+
+            return left
+        dp = []
+
+        for num in nums:
+            # Use custom bisect_left to find the correct position
+            i = bisect_left(dp, num)
+
+            # If num is larger than any element in dp, append it
+            if i == len(dp):
+                dp.append(num)
+            else:
+                # Otherwise, replace the element at the found index
+                dp[i] = num
+
+        # The length of dp is the length of the longest increasing subsequence
+        return len(dp)
