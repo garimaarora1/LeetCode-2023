@@ -16,5 +16,3 @@ class Solution:
                     left -= 1
                     right += 1
         return s[indexes[0]: indexes[1]+1]
-            
-        
