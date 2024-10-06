@@ -13,9 +13,8 @@ class Solution:
         level_order = []
         
         while queue:
-            n = len(queue)
             curr_level = []
-            for _ in range(n):
+            for _ in range(len(queue)):
                 node = queue.popleft()
                 curr_level.append(node.val)
                 if node.left:
