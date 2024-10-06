@@ -29,8 +29,6 @@ class Solution:
                             
             visited.update(next_level_words)
             q.extend(next_level_words)
-            if found:
-                break
 
         if not found:
             return []
