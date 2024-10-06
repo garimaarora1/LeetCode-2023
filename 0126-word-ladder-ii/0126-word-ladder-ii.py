@@ -1,47 +1,41 @@
-from collections import deque, defaultdict
-from typing import List
-
 class Solution:
     def findLadders(self, beginWord: str, endWord: str, wordList: List[str]) -> List[List[str]]:
-        wordset = set(wordList)
-        if endWord not in wordset:
+        wordlist_set = set(wordList)
+        if endWord not in wordlist_set:
             return []
-        
-        # BFS to build levels and parent-child relationship
-        q = deque([beginWord])
-        visited = set([beginWord])
-        parents = defaultdict(list)  # to track parents of each word
+        queue = deque([beginWord])
+        visited = set(beginWord)
+        parents = defaultdict(list)
         found = False
-        level_words = set([beginWord])  # to track words at the current level
 
-        while q and not found:
-            next_level_words = set()
-            for _ in range(len(q)):
-                word = q.popleft()
+        while queue and not found:
+            next_level_set = set()
+            for _ in range(len(queue)):
+                word = queue.popleft()
                 for i in range(len(word)):
                     for j in range(26):
-                        new_word = word[:i] + chr(ord('a') + j) + word[i + 1:]
+                        new_word = word[:i] + chr(ord('a') + j) + word[i+1:]
+                    
                         if new_word == endWord:
                             found = True
-                        if new_word in wordset and new_word not in visited:
-                            next_level_words.add(new_word)
+                        if new_word in wordlist_set and new_word not in visited:
+                            next_level_set.add(new_word)
                             parents[new_word].append(word)
-                            
-            visited.update(next_level_words)
-            q.extend(next_level_words)
-
+            visited.update(next_level_set)
+            queue.extend(next_level_set)
+        
         if not found:
             return []
 
-        # DFS to build the paths from endWord to beginWord
         res = []
-
-        def dfs(word, path):
-            if word == beginWord:
-                res.append(path[::-1])
+        
+        def dfs(node, curr_path):
+            if node == beginWord:
+                res.append(curr_path[::-1])
                 return
-            for parent in parents[word]:
-                dfs(parent, path + [parent])
-
+            
+            for parent in parents[node]:
+                dfs(parent, curr_path + [parent])
         dfs(endWord, [endWord])
+        
         return res
