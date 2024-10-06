@@ -10,11 +10,11 @@ class Solution:
         while q:
             for _ in range(len(q)):
                 word = q.popleft()
-                if word == endWord:
-                    return steps
                 for i in range(len(word)):
                     for j in range(26):
                         newWord = word[:i] + chr(ord('a') + j) + word[i+1:]
+                        if newWord == endWord:
+                            return steps + 1
                         if newWord in s:
                             q.append(newWord)
                             s.remove(newWord)
