@@ -15,40 +15,35 @@ class UnionFind:
         parent_y = self.find(y)
         
         if parent_x != parent_y:
-            if self.rank[parent_x] < self.rank[parent_y]:
+            if self.rank[parent_x] > self.rank[parent_y]:
+                self.parent[parent_y] = parent_x
+            elif self.rank[parent_x] < self.rank[parent_y]:
                 self.parent[parent_x] = parent_y
-            elif self.rank[parent_x] > self.rank[parent_y]:
-                self.parent[parent_y] = parent_x
             else:
-                self.parent[parent_y] = parent_x
-                self.rank[parent_x] += 1
+                self.parent[parent_x] = parent_y
+                self.rank[parent_y] += 1
             return True
         return False
+        
 
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
         row = len(grid)
         col = len(grid[0])
-        n = row * col
-        uf = UnionFind(n)
-        count = 0
-        directions = [[0, 1], [1, 0], [0, -1], [-1, 0]]
-
+        ones = 0
+        uf = UnionFind(row*col)
+        directions = [[1, 0], [0, 1], [0, -1], [-1, 0]]
         for i in range(row):
             for j in range(col):
                 if grid[i][j] == '1':
-                    count += 1
+                    ones += 1
                     pos1 = i * col + j
-                
-                    for dx, dy in directions:
-                        x = i + dx
-                        y = j + dy
-                        
-                        if 0<=x<row and 0<=y<col and grid[x][y] == '1':
-                            pos2 = x * col + y
-                            
+                    
+                    for dr, dc in directions:
+                        dx = i + dr
+                        dy = j + dc
+                        if 0<=dx<row and 0<=dy<col and grid[dx][dy] == '1':
+                            pos2 = dx * col + dy
                             if uf.union(pos1, pos2):
-                                count -= 1
-        return count
-        
-        
+                                ones -= 1
+        return ones
