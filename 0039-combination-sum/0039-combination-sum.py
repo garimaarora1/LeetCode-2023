@@ -3,13 +3,12 @@ class Solution:
     - Use Depth-First Search (DFS) to explore all possible combinations.
     - For each recursive call, consider only the current index and onwards to avoid         permutations of the same combination.
     - Ensure each number can be used multiple times but avoid revisiting previous           indices to avoid duplicate combinations.
-    Time Complexity: O(2^N) where N is the length of `candidates`
-    Space Complexity: O(N) where N is the length of the current combination
+    Time Complexity: O(N^((T/M)+1)) 
+    Space Complexity: O(N^(T/M)
     """
 
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         ans = []
-        curr_ans = []
         n = len(candidates)
         
         def dfs(i, curr_ans, curr_sum):
@@ -25,5 +24,5 @@ class Solution:
                 dfs(j, curr_ans, curr_sum)
                 curr_sum -= curr_ans.pop()
         
-        dfs(0, curr_ans, 0)
+        dfs(0, [], 0)
         return ans
