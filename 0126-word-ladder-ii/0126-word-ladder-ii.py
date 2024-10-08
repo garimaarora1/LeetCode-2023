@@ -29,6 +29,7 @@ class Solution:
 
         res = []
         
+        # backtracking
         def dfs(node, curr_path):
             if node == beginWord:
                 res.append(curr_path[::-1])
