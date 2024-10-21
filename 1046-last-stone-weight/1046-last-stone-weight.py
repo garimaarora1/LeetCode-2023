@@ -1,6 +1,7 @@
 class Solution:
     def lastStoneWeight(self, stones: List[int]) -> int:
         stones = [-stone for stone in stones]
+        # max heap
         heap = stones
         heapq.heapify(heap)
         
