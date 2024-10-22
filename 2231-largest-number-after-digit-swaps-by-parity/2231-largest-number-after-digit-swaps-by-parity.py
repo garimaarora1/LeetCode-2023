@@ -15,8 +15,8 @@ class Solution:
         result = []
         for d in digits:
             if d % 2 == 0:
-                result.append(-heapq.heappop(even_heap))  # Pop the largest even digit
+                result.append(-heapq.heappop(even_heap))
             else:
-                result.append(-heapq.heappop(odd_heap))  # Pop the largest odd digit
+                result.append(-heapq.heappop(odd_heap))
 
         return int("".join(map(str, result)))
