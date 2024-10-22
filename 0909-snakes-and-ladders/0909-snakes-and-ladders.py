@@ -3,6 +3,7 @@ class Solution:
         board.reverse()
         visited = set()
         q = deque()
+        # Start from the first cell
         q.append((1, 0))
         visited.add(1)
         n = len(board)
@@ -22,7 +23,7 @@ class Solution:
             for i in range(1, 7):
                 nextMove = curMove + i
                 if nextMove > n * n:
-                    continue
+                    break
                 
                 r, c = position(nextMove)
                 if r < n and c < n and board[r][c] != -1:
