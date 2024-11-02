@@ -3,12 +3,13 @@ class Solution:
         if len(nums) == 1:
             return nums[0]
         n = len(nums)
-        dp = [0] * n
         
-        dp[0] = nums[0]
-        dp[1] = max(dp[0], nums[1])
+        first = nums[0]
+        second = max(first, nums[1])
         
         for i in range(2, n):
-            dp[i] = max(dp[i-2] + nums[i], dp[i-1])
+            temp = max(first + nums[i], second)
+            first = second
+            second = temp
         
-        return dp[-1]
+        return second
