@@ -3,7 +3,8 @@ class SeatManager:
         # Set marker to the first unreserved seat.
         self.marker = 1
 
-        # Min heap to store all unreserved seats.
+        # Min heap to store all unreserved seats. 
+        # to store available again seats post getting unreserved
         self.available_seats = []
 
     def reserve(self):
