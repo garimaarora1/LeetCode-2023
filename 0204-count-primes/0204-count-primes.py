@@ -4,7 +4,6 @@ class Solution:
             return 0
         numbers = [True] * (n)
         numbers[0] = numbers[1] = False
-
         for p in range(2, int(sqrt(n)) + 1):
             if numbers[p]:
                 # Set all multiples of p to false because they are not prime.
