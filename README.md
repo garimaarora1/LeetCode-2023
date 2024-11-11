@@ -73,6 +73,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Array
 |  |
 | ------- |
+| [0011-container-with-most-water](https://github.com/garimaarora1/LeetCode-2023/tree/master/0011-container-with-most-water) |
 | [0105-construct-binary-tree-from-preorder-and-inorder-traversal](https://github.com/garimaarora1/LeetCode-2023/tree/master/0105-construct-binary-tree-from-preorder-and-inorder-traversal) |
 | [0121-best-time-to-buy-and-sell-stock](https://github.com/garimaarora1/LeetCode-2023/tree/master/0121-best-time-to-buy-and-sell-stock) |
 | [0122-best-time-to-buy-and-sell-stock-ii](https://github.com/garimaarora1/LeetCode-2023/tree/master/0122-best-time-to-buy-and-sell-stock-ii) |
@@ -99,6 +100,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Greedy
 |  |
 | ------- |
+| [0011-container-with-most-water](https://github.com/garimaarora1/LeetCode-2023/tree/master/0011-container-with-most-water) |
 | [0122-best-time-to-buy-and-sell-stock-ii](https://github.com/garimaarora1/LeetCode-2023/tree/master/0122-best-time-to-buy-and-sell-stock-ii) |
 ## Linked List
 |  |
@@ -133,4 +135,8 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [0273-integer-to-english-words](https://github.com/garimaarora1/LeetCode-2023/tree/master/0273-integer-to-english-words) |
+## Two Pointers
+|  |
+| ------- |
+| [0011-container-with-most-water](https://github.com/garimaarora1/LeetCode-2023/tree/master/0011-container-with-most-water) |
 <!---LeetCode Topics End-->
