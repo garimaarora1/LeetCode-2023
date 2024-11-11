@@ -19,7 +19,7 @@ class Solution:
         while queue:
             level_size = len(queue)
             current_level_nodes = []
-            level_sum = 0
+            next_level_sum = 0
             
             # First pass: collect nodes and calculate the level sum
             for _ in range(level_size):
@@ -27,15 +27,15 @@ class Solution:
                 current_level_nodes.append(node)
                 
                 if node.left:
-                    level_sum += node.left.val
+                    next_level_sum += node.left.val
                     queue.append(node.left)
                 if node.right:
-                    level_sum += node.right.val
+                    next_level_sum += node.right.val
                     queue.append(node.right)
             
             # Second pass: update each node's value with the sum of its cousins
             for node in current_level_nodes:
-                sum_of_cousins = level_sum
+                sum_of_cousins = next_level_sum
                 
                 if node.left:
                     sum_of_cousins -= node.left.val
